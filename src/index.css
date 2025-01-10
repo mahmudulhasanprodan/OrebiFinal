@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/*Root Element For This Project*/
+:root{
+  --DM_Sans : "DM Sans", serif;
+  --Lato : "Lato", serif;
+  --Common_Color : #ffff;
+  --Menu_Color : #F5F5F3;
+  --Btn_Color : #262626;
+  --Header_text_Color : #767676;
+};
+
+/*Root Element For This Project*/
+
+/* Common Css For this Project */
+@layer base{
+  @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap');
+   *{
+    @apply m-0 p-0 outline-none box-border;
+   };
+  a{
+    @apply no-underline ;
+  };
+  ul,ol,li{
+    @apply list-none inline-block;
+  };
+  img{
+    @apply align-middle;
+  };
+  h1,h2,h3,h4,h5,h6,img,span,div,a,ul,ol,li,p{
+    @apply m-0 p-0;
+  };
+};
+/* Common Css For this Project */
