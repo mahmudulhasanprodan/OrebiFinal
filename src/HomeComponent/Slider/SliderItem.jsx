@@ -7,6 +7,7 @@ import SliderThree from "../../assets/HomeComponentImage/SliderThree.jpg"
 import SliderFour from "../../assets/HomeComponentImage/SliderFour.jpg"
 import { FaAngleLeft } from "react-icons/fa";
 import { FaAngleRight } from 'react-icons/fa6';
+import SliderRight from '../SliderRight/SliderRight';
 
 
 const SliderItem = () => {
@@ -56,7 +57,6 @@ function SamplePrevArrow(props) {
         height: "30px",
         cursor: "pointer",
         borderRadius: "20px 0px 0px 20px",
-        right: "50%",
         zIndex: "1",
         right: "0%",
         top: "50%",
@@ -90,29 +90,35 @@ var settings = {
     <>
       <div className="">
         <div className="container">
-          <div className="h-[200px] w-[950px]">
-            <Slider {...settings}>
-              <div>
-                <picture>
-                  <img src={SliderOne} alt={SliderOne} />
-                </picture>
-              </div>
-              <div>
-                <picture>
-                  <img src={SliderTwo} alt={SliderTwo} />
-                </picture>
-              </div>
-              <div>
-                <picture>
-                  <img src={SliderThree} alt={SliderThree} />
-                </picture>
-              </div>
-              <div>
-                <picture>
-                  <img src={SliderFour} alt={SliderFour} />
-                </picture>
-              </div>
-            </Slider>
+          <div className="flex gap-x-8">
+            <div className="h-auto w-[950px]">
+              <Slider {...settings}>
+                <div>
+                  <picture>
+                    <img src={SliderOne} alt={SliderOne} />
+                  </picture>
+                </div>
+                <div>
+                  <picture>
+                    <img src={SliderTwo} alt={SliderTwo} />
+                  </picture>
+                </div>
+                <div>
+                  <picture>
+                    <img src={SliderThree} alt={SliderThree} />
+                  </picture>
+                </div>
+                <div>
+                  <picture>
+                    <img src={SliderFour} alt={SliderFour} />
+                  </picture>
+                </div>
+              </Slider>
+            </div>
+            {/* App Detail Section Is Here */}
+            {/* <div className="h-[330px] w-[200px] bg-red-200">
+              <SliderRight />
+            </div> */}
           </div>
         </div>
       </div>

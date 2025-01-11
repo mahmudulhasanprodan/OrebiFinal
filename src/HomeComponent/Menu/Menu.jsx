@@ -27,7 +27,7 @@ const [MouseHover,setMouseHover] = useState(false);
 
   return (
     <>
-      <div className="bg-Menu_Color py-6">
+      <div className="bg-Menu_Color py-4">
         <div className="container">
           <Flex className={"items-center justify-between"}>
             <div className="relative flex cursor-pointer items-center gap-x-2">

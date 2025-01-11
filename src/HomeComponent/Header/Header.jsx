@@ -8,7 +8,7 @@ const Header = () => {
   return (
     <div className="bg-Common_Color">
       <div className="container">
-        <Flex className={"items-center justify-between py-8"}>
+        <Flex className={"items-center justify-between py-4"}>
           <div>
             <picture>
               <img src={MainLogo} alt={MainLogo} />
