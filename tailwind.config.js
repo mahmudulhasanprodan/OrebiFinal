@@ -15,8 +15,9 @@ export default {
         Menu_Color: "var(--Menu_Color)",
         Btn_Color: "var(--Btn_Color)",
         Header_text_Color: "var(--Headet_text_Color)",
+        SliderBg_Color: "var(--SliderBg_Color)",
       },
     },
   },
-  plugins: ["prettier-plugin-tailwindcss"],
+  plugins: ["prettier-plugin-tailwindcss", require("tailwind-scrollbar")],
 };

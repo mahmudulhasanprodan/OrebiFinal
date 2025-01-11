@@ -34,7 +34,6 @@ const [MouseHover,setMouseHover] = useState(false);
               <div
                 className="flex items-center gap-x-2"
                 onMouseEnter={HandleMouseEnter}
-                onMouseLeave={HandleMouseLeave}
               >
                 <span className={`${MouseHover && "text-yellow-600"}`}>
                   <FaBarsStaggered />
@@ -42,11 +41,14 @@ const [MouseHover,setMouseHover] = useState(false);
                 <p>Shop by Category</p>
               </div>
               {MouseHover && (
-                <div className="bg-Common_Color absolute top-8 h-[250px] w-[200px] overflow-hidden border-[1px] border-gray-300">
+                <div
+                  className="absolute z-10 top-8 h-[250px] w-[200px] overflow-hidden border-[1px] border-gray-300 bg-Common_Color"
+                  onMouseLeave={HandleMouseLeave}
+                >
                   <ul className="flex flex-col">
                     <Link
                       to={"/"}
-                      className="hover:text-Common_Color flex items-center justify-between py-1 pl-3 hover:bg-gray-400"
+                      className="flex items-center justify-between py-1 pl-3 hover:bg-gray-400 hover:text-Common_Color"
                     >
                       Beauty
                       <span className="text-Common_Color">
@@ -55,7 +57,7 @@ const [MouseHover,setMouseHover] = useState(false);
                     </Link>
                     <Link
                       to={"/"}
-                      className="hover:text-Common_Color flex items-center justify-between py-1 pl-3 hover:bg-gray-400"
+                      className="flex items-center justify-between py-1 pl-3 hover:bg-gray-400 hover:text-Common_Color"
                     >
                       Fragrances
                       <span className="text-Common_Color">
@@ -64,7 +66,7 @@ const [MouseHover,setMouseHover] = useState(false);
                     </Link>
                     <Link
                       to={"/"}
-                      className="hover:text-Common_Color flex items-center justify-between py-1 pl-3 hover:bg-gray-400"
+                      className="flex items-center justify-between py-1 pl-3 hover:bg-gray-400 hover:text-Common_Color"
                     >
                       Groceries
                       <span className="text-Common_Color">
@@ -73,7 +75,7 @@ const [MouseHover,setMouseHover] = useState(false);
                     </Link>
                     <Link
                       to={"/"}
-                      className="hover:text-Common_Color flex items-center justify-between py-1 pl-3 hover:bg-gray-400"
+                      className="flex items-center justify-between py-1 pl-3 hover:bg-gray-400 hover:text-Common_Color"
                     >
                       Furniture
                       <span className="text-Common_Color">
@@ -82,7 +84,7 @@ const [MouseHover,setMouseHover] = useState(false);
                     </Link>
                     <Link
                       to={"/"}
-                      className="hover:text-Common_Color flex items-center justify-between py-1 pl-3 hover:bg-gray-400"
+                      className="flex items-center justify-between py-1 pl-3 hover:bg-gray-400 hover:text-Common_Color"
                     >
                       Women Clothes
                       <span className="text-Common_Color">
@@ -91,7 +93,7 @@ const [MouseHover,setMouseHover] = useState(false);
                     </Link>
                     <Link
                       to={"/"}
-                      className="hover:text-Common_Color flex items-center justify-between py-1 pl-3 hover:bg-gray-400"
+                      className="flex items-center justify-between py-1 pl-3 hover:bg-gray-400 hover:text-Common_Color"
                     >
                       Men Clothes
                       <span className="text-Common_Color">
@@ -100,7 +102,7 @@ const [MouseHover,setMouseHover] = useState(false);
                     </Link>
                     <Link
                       to={"/"}
-                      className="hover:text-Common_Color flex items-center justify-between py-1 pl-3 hover:bg-gray-400"
+                      className="flex items-center justify-between py-1 pl-3 hover:bg-gray-400 hover:text-Common_Color"
                     >
                       Electronics Device
                       <span className="text-Common_Color">
@@ -143,38 +145,37 @@ const [MouseHover,setMouseHover] = useState(false);
               <span>
                 <FaShoppingCart />
               </span>
-              {/* <div className="absolute right-0 top-6 bg-gray-100 h-[400px] w-[300px] rounded-md border-[1px] border-gray-300">
-                <div className="flex items-center justify-between border-b-[1px] border-gray-300 hover:bg-gray-300">
-                  <div className="flex items-center gap-x-3 py-2 pl-2">
-                    <picture>
-                      <img src={Imag} alt={Imag} className="h-24 w-24 border-2" />
-                    </picture>
-                    <div>
-                      <h2 className="font-Lato font-semibold text-base">Furniture....</h2>
-                      <p className="font-Lato font-semibold text-sm">$48.00</p>
+              {/* <div className="absolute right-0 top-6 h-[500px] w-[300px]">
+                <div className="absolute right-0 top-6 h-[400px] w-[300px] overflow-y-scroll scrollbar-thumb-gray-700 scrollbar-track-gray-300 scrollbar-thin  rounded-md border-[1px] border-gray-300 bg-gray-100">
+                  <div className="flex items-center justify-between border-b-[1px] border-gray-300 hover:bg-gray-300">
+                    <div className="flex items-center gap-x-3 py-2 pl-2">
+                      <picture>
+                        <img
+                          src={Imag}
+                          alt={Imag}
+                          className="h-24 w-24 border-2"
+                        />
+                      </picture>
+                      <div>
+                        <h2 className="font-Lato text-base font-semibold">
+                          Furniture....
+                        </h2>
+                        <p className="font-Lato text-sm font-semibold">
+                          $48.00
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                  <div className="pr-3">
-                    <span>
-                      <FaAngleRight />
-                    </span>
+                    <div className="pr-3">
+                      <span>
+                        <FaAngleRight />
+                      </span>
+                    </div>
                   </div>
                 </div>
-                <div className="flex items-center justify-between border-b-[1px] border-gray-300 hover:bg-gray-300">
-                  <div className="flex items-center gap-x-3 py-2 pl-2">
-                    <picture>
-                      <img src={Imag} alt={Imag} className="h-24 w-24 border-2" />
-                    </picture>
-                    <div>
-                      <h2 className="font-Lato font-semibold text-base">Furniture....</h2>
-                      <p className="font-Lato font-semibold text-sm">$48.00</p>
-                    </div>
-                  </div>
-                  <div className="pr-3">
-                    <span>
-                      <FaAngleRight />
-                    </span>
-                  </div>
+                <div className="absolute bottom-0 right-0 h-[100px] w-[300px] rounded-b-md border-[1px] border-gray-300 bg-[#D8D8D8]">
+                  <button className="m-auto mt-6 block w-48 bg-Btn_Color py-3 font-Lato text-lg font-bold text-Common_Color hover:bg-yellow-700">
+                    Cheackout
+                  </button>
                 </div>
               </div> */}
             </div>
