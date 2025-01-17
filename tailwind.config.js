@@ -24,5 +24,5 @@ export default {
       }
     },
   },
-  plugins: ["prettier-plugin-tailwindcss", require("tailwind-scrollbar")],
+  plugins: [require("tailwind-scrollbar")],
 };

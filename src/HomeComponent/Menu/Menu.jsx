@@ -27,10 +27,10 @@ const [MouseHover,setMouseHover] = useState(false);
 
   return (
     <>
-      <div className="bg-Menu_Color py-4">
+      <div className="bg-Menu_Color py-4 pt-16 md:pt-0">
         <div className="container">
           <Flex className={"items-center justify-between"}>
-            <div className="relative flex cursor-pointer items-center gap-x-2">
+            <div className="relative flex cursor-pointer items-center gap-x-2 px-4 md:px-0">
               <div
                 className="flex items-center gap-x-2"
                 onMouseEnter={HandleMouseEnter}
@@ -113,7 +113,7 @@ const [MouseHover,setMouseHover] = useState(false);
                 </div>
               )}
             </div>
-            <div className="relative">
+            <div className="relative hidden md:block">
               <div>
                 <input
                   type="text"
@@ -129,7 +129,7 @@ const [MouseHover,setMouseHover] = useState(false);
                 </span>
               </div>
             </div>
-            <div className="relative flex cursor-pointer items-center gap-x-6">
+            <div className="relative flex cursor-pointer items-center gap-x-6 px-4 md:px-0">
               <div className="flex items-center gap-x-1">
                 <span>
                   <FaUser />

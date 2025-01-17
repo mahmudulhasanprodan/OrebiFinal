@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const FooterItem = ({AllItem = ["One","Two","Three"],Title}) => {
+const FooterItem = ({AllItem = ["One","Two","Three"],Title,className}) => {
 
-  console.log(AllItem);
+
   
   return (
     <>
-      <div>
+      <div className={className}>
         <div>
           <h2 className="font-DM_Sans font-bold text-base text-Btn_Color">{Title ? Title : "Title Is Missing"}</h2>
         </div>

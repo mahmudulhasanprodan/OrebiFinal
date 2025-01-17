@@ -91,26 +91,26 @@ var settings = {
       <div className="">
         <div className="container">
           <div className="flex gap-x-8">
-            <div className="h-auto w-[950px]">
+            <div className="h-auto w-full md:w-[950px]">
               <Slider {...settings}>
                 <div>
                   <picture>
-                    <img src={SliderOne} alt={SliderOne} />
+                    <img src={SliderOne} alt={SliderOne}/>
                   </picture>
                 </div>
                 <div>
                   <picture>
-                    <img src={SliderTwo} alt={SliderTwo} />
+                    <img src={SliderTwo} alt={SliderTwo}/>
                   </picture>
                 </div>
                 <div>
                   <picture>
-                    <img src={SliderThree} alt={SliderThree} />
+                    <img src={SliderThree} alt={SliderThree}/>
                   </picture>
                 </div>
                 <div>
                   <picture>
-                    <img src={SliderFour} alt={SliderFour} />
+                    <img src={SliderFour} alt={SliderFour}/>
                   </picture>
                 </div>
               </Slider>

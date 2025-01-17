@@ -4,7 +4,7 @@ import img from "../../assets/HomeComponentImage/Image.png"
 const Card = () => {
   return (
     <>
-      <div className="h-[300px] w-[200px] cursor-pointer rounded-sm bg-Common_Color shadow-md">
+      <div className="h-auto md:h-[300px] w-[200px] cursor-pointer rounded-sm bg-Common_Color shadow-md">
         <div className="h-[180px] w-full">
           <picture>
             <img src={img} alt={img} className="h-full w-full" />

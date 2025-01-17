@@ -1,5 +1,6 @@
 import React from 'react'
 import Home from './Pages/Home/Home';
+import RouteLayout from './RouteLayout/RouteLayout';
 
 import {
   createBrowserRouter,
@@ -10,8 +11,8 @@ import {
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route>
-      <Route path="/" element={<Home />}></Route>
+    <Route path="/" element={<RouteLayout />}>
+      <Route index element={<Home />}></Route>
     </Route>
   ),
 );
