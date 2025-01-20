@@ -1,6 +1,7 @@
 import React from 'react'
 import Home from './Pages/Home/Home';
 import RouteLayout from './RouteLayout/RouteLayout';
+import Shop from './Pages/Shop/Shop';
 
 import {
   createBrowserRouter,
@@ -13,6 +14,7 @@ const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RouteLayout />}>
       <Route index element={<Home />}></Route>
+      <Route path="/shop" element={<Shop />}></Route>
     </Route>
   ),
 );
