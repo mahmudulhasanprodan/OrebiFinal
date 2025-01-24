@@ -20,7 +20,7 @@ const ShopDetails = ({Title}) => {
           </div>
           <div className="flex">
             <ShopLeft className={"w-[25%]"} />
-            <ShopRight className={"w-[75%] bg-green-400 h-72"} />
+            <ShopRight className={"w-[75%] border-2 border-slate-300"} />
           </div>
         </div>
       </div>

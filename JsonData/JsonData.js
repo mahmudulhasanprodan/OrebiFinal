@@ -55,3 +55,22 @@ export const BrandData = [
     { id: 5, Price: "$61-$120" },
     { id: 6, Price: "$121-$200" },
   ];
+
+  export const DropdownData = [
+    { id: 1, product: "Feature" },
+    { id: 2, product: "Cloths" },
+    { id: 3, product: "Sunglass" },
+    { id: 4, product: "Fasion" },
+    { id: 5, product: "Men Fasion" },
+  
+  ];
+  
+  export const DropdownShowData = [
+    { id: 1, product: 30 },
+    { id: 2, product: 10 },
+    { id: 3, product: 12 },
+    { id: 4, product: 6 },
+    { id: 5, product: 25 },
+  
+  ];
+  

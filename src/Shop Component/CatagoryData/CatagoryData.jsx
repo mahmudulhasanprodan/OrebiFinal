@@ -11,6 +11,7 @@ const CatagoryData = ({Title,AllData=["One","Two","Three"]}) => {
   );
 
 
+console.log(showCategories);
 
   // HandleShow function start here
 
