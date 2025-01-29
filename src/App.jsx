@@ -2,6 +2,7 @@ import React from 'react'
 import Home from './Pages/Home/Home';
 import RouteLayout from './RouteLayout/RouteLayout';
 import Shop from './Pages/Shop/Shop';
+import Login from './Pages/Login/Login';
 
 import {
   createBrowserRouter,
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
     <Route path="/" element={<RouteLayout />}>
       <Route index element={<Home />}></Route>
       <Route path="/shop" element={<Shop />}></Route>
+      <Route path="/login" element={<Login />}></Route>
     </Route>
   ),
 );

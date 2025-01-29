@@ -91,7 +91,7 @@ var settings = {
       <div className="">
         <div className="container">
           <div className="flex gap-x-8">
-            <div className="h-auto w-full md:w-[950px]">
+            <div className="h-auto w-full xl:w-[950px]">
               <Slider {...settings}>
                 <div>
                   <picture>

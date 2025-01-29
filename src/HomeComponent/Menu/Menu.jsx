@@ -29,8 +29,8 @@ const [MouseHover,setMouseHover] = useState(false);
     <>
       <div className="bg-Menu_Color py-4 pt-16 md:pt-0">
         <div className="container">
-          <Flex className={"items-center justify-between py-4"}>
-            <div className="relative flex cursor-pointer items-center gap-x-2 px-4 md:px-0">
+          <Flex className={"items-center justify-between py-4 pl-4 xl:pl-0  md:pr-4 xl:pr-0"}>
+            <div className="relative flex cursor-pointer items-center gap-x-2">
               <div
                 className="flex items-center gap-x-2"
                 onMouseEnter={HandleMouseEnter}
@@ -120,7 +120,7 @@ const [MouseHover,setMouseHover] = useState(false);
                   id="SearchId"
                   name="SearchId"
                   placeholder="Search Products"
-                  className="w-[500px] border-2 py-2 pl-3"
+                  className="w-[500px] md:w-[400px] lg:w-[500px] border-2 py-2 pl-3"
                 />
               </div>
               <div className="absolute right-3 top-1/2 -translate-y-2/4 cursor-pointer">

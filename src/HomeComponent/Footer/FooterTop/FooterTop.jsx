@@ -6,11 +6,11 @@ import Flex from '../../../CommonComponent/Flex/Flex'
 const FooterTop = () => {
   return (
     <>
-      <div className="bg-Footer_Color text-Text_Color mt-10">
+      <div className="bg-Footer_Color text-Text_Color mt-10 px-4 xl:px-0">
         <div className="container">
           <div>
-            <Flex className={"gap-x-32 py-10 flex-col md:flex-row gap-y-10"}>
-              <Flex className={"gap-x-10 md:gap-x-36 px-4 md:px-0"}>
+            <Flex className={"gap-x-32 md:gap-x-20 xl:gap-x-32 py-10 flex-col md:flex-row gap-y-10"}>
+              <Flex className={"gap-x-10 xl:gap-x-36 px-4 md:px-0"}>
                 <FooterItem
                   AllItem={["Home", "Shop", "About", "Contact", "Blog"]}
                   Title={"MENU"}

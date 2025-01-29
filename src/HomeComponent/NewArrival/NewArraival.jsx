@@ -14,7 +14,7 @@ const NewArraival = () => {
                 <button className="px-8 py-2 bg-Btn_Color text-Common_Color">Shop All Products</button>
               </div>
             </div>
-            <Flex className={"flex flex-col md:flex-row items-center justify-center gap-3 overflow-hidden bg-slate-100 md:bg-transparent"}>
+            <Flex className={"flex flex-col flex-wrap xl:flex-nowrap sm:flex-row items-center justify-center gap-x-3 lg:gap-x-12 overflow-hidden bg-slate-100 md:bg-transparent"}>
               <div className="py-4">
                 <Card />
               </div>

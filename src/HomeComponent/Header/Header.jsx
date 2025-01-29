@@ -24,15 +24,15 @@ const Header = () => {
 
   
   return (
-    <div className="bg-Common_Color fixed md:static z-10 md:z-0 w-full md:w-[100%]">
+    <div className="bg-Common_Color fixed md:static z-10 md:z-0 w-full md:w-[100%] pl-4 xl:pl-0 md:pr-4 xl:pr-0">
       <div className="container">
         <Flex className={"items-center justify-between py-4"}>
-          <div className="cursor-pointer px-4 md:px-0">
+          <div className="cursor-pointer md:hidden lg:block">
             <picture>
               <img src={MainLogo} alt={MainLogo} />
             </picture>
           </div>
-          <div className={"flex items-center gap-x-48"}>
+          <div className={"flex items-center gap-x-48 md:gap-x-32 lg:gap-x-48"}>
             <div
               className={`absolute z-10 md:z-0 flex flex-col items-center gap-x-24 md:static md:flex-row ${MenubarOpen ? "right-0 top-10 h-[300px] w-48 bg-slate-200 py-2 transition-all delay-150 ease-in-out md:h-0" : "right-[-100%] top-0 h-[200px] transition-all delay-150 ease-in-out md:h-0"}`}
             >
@@ -97,7 +97,7 @@ const Header = () => {
               </NavLink>
             </div>
 
-            <div className="hidden md:block">
+            <div className="hidden md:block ">
               <Flex className={"items-center gap-x-6"}>
                 <div>
                   <button className="w-24 rounded-bl-[20px] bg-Btn_Color py-2 font-DM_Sans text-base font-bold text-Common_Color">

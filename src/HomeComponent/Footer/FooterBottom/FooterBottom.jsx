@@ -8,7 +8,7 @@ import Flex from '../../../CommonComponent/Flex/Flex';
 const FooterBottom = () => {
   return (
     <>
-      <div className="bg-Footer_Color border-t-2 border-t-yellow-600 md:border-t-black">
+      <div className="bg-Footer_Color border-t-2 border-t-yellow-600 md:border-t-black px-4">
         <div className="container">
           <Flex className={"items-center justify-between py-6"}>
             <div className="hidden md:block">
