@@ -1,6 +1,6 @@
 import React from 'react'
-import BreadCrumb from '../BreadCrumb/BreadCrumb';
-import Flex from "../../CommonComponent/Flex/Flex"
+import BreadCrumb from "../CommonComponent/BreadCrumb/BreadCrumb"
+import Flex from '../CommonComponent/Flex/Flex';
 
 
 const LoginDetails = ({Title}) => {
