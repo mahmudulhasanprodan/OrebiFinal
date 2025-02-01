@@ -8,7 +8,7 @@ const LoginDetails = ({Title}) => {
     <>
       <div className="py-10">
         <div className="container">
-          <div className="pb-28 px-4 lg:px-0">
+          <div className="pb-28 px-4 xl:px-0">
             <div>
               <h2 className="font-DM_Sans text-4xl font-bold text-Btn_Color">
                 {Title ? Title : "Title Missing"}
@@ -19,13 +19,13 @@ const LoginDetails = ({Title}) => {
             </div>
           </div>
           <div>
-            <p className="font-DM_Sans text-base font-normal text-Text_ColorTwo w-full px-4 lg:px-0 md:w-[500px] text-justify">
+            <p className="font-DM_Sans text-base font-normal text-Text_ColorTwo w-full px-4 xl:px-0 md:w-[500px] text-justify">
               "Welcome back! Please log in to access your account and continue
               where you left off. Don’t have an account? Sign up now to get
               started!"
             </p>
           </div>
-          <div className="py-24 px-4 lg:px-0">
+          <div className="py-24 px-4 xl:px-0">
             <div>
               <h2 className="font-DM_Sans text-3xl text-Btn_Color font-bold">
                 Returning Customer
@@ -68,7 +68,7 @@ const LoginDetails = ({Title}) => {
               </div>
             </Flex>
             <div className="mt-10">
-              <button className="px-16 py-2 border-2 border-slate-300 font-Lato font-bold text-base hover:bg-Btn_Color hover:text-Common_Color">
+              <button className="w-32 py-2 bg-Btn_Color text-Common_Color">
                 Login
               </button>
             </div>
