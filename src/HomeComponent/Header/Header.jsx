@@ -24,9 +24,9 @@ const Header = () => {
 
   
   return (
-    <div className="bg-Common_Color fixed md:static z-10 md:z-0 w-full md:w-[100%] pl-4 xl:pl-0 md:pr-4 xl:pr-0">
+    <div className="bg-Common_Color fixed md:static z-10 md:z-0 w-full md:w-[100%]">
       <div className="container">
-        <Flex className={"items-center justify-between py-4"}>
+        <Flex className={"items-center justify-between py-4 px-4 2xl:px-0"}>
           <div className="cursor-pointer md:hidden lg:block">
             <picture>
               <img src={MainLogo} alt={MainLogo} />
@@ -114,7 +114,7 @@ const Header = () => {
           </div>
 
           <div
-            className={`cursor-pointer px-4 md:hidden md:px-0 ${MenubarOpen && "text-yellow-600"}`}
+            className={`cursor-pointer md:hidden  ${MenubarOpen && "text-yellow-600"}`}
             onClick={HandleMenuBar}
           >
             <span>

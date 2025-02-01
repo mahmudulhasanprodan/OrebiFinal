@@ -3,6 +3,8 @@ import Home from './Pages/Home/Home';
 import RouteLayout from './RouteLayout/RouteLayout';
 import Shop from './Pages/Shop/Shop';
 import Login from './Pages/Login/Login';
+import Contact from './Pages/Contact/Contact';
+import SignUp from './Pages/SignUp/SignUp';
 
 import {
   createBrowserRouter,
@@ -17,6 +19,8 @@ const router = createBrowserRouter(
       <Route index element={<Home />}></Route>
       <Route path="/shop" element={<Shop />}></Route>
       <Route path="/login" element={<Login />}></Route>
+      <Route path="/contact" element={<Contact />}></Route>
+      <Route path="/signup" element={<SignUp />}></Route>
     </Route>
   ),
 );
