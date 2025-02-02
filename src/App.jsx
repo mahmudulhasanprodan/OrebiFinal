@@ -6,6 +6,7 @@ import Login from './Pages/Login/Login';
 import Contact from './Pages/Contact/Contact';
 import SignUp from './Pages/SignUp/SignUp';
 import Account from './Pages/Account/Account';
+import Billing from './Pages/Billing/Billing';
 
 import {
   createBrowserRouter,
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="/contact" element={<Contact />}></Route>
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/account" element={<Account />}></Route>
+      <Route path="/billing" element={<Billing />}></Route>
     </Route>
   ),
 );
