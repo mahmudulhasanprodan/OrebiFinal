@@ -55,9 +55,11 @@ const[DataTwo,setDataTwo] = useState(DropdownShowData);
               >
                 <option value="Select Item">Select Item</option>
                 {DataTwo?.map((item) => (
-                  <option value={item.product} key={item.product}>
-                    {item.product}
-                  </option>
+                  <div key={item.product}>
+                    <option value={item.product}>
+                      {item.product}
+                    </option>
+                  </div>
                 ))}
               </select>
             </div>

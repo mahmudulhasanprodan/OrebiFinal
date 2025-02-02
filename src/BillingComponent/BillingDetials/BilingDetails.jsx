@@ -18,10 +18,14 @@ const BilingDetails = ({Title}) => {
               <BreadCrumb />
             </div>
           </div>
-          <div>
-            <h2>Billing Details</h2>
+          <div className="flex items-center justify-center py-10">
+            <h2 className="font-DM_Sans font-bold text-4xl underline">Billing Details</h2>
           </div>
-          <Flex className={"flex-col gap-y-4 items-center justify-center"}>
+          <Flex
+            className={
+              "flex-col gap-y-4 items-center justify-center bg-blue-50 py-20"
+            }
+          >
             <div>
               <SignForm
                 LabelTitle={"First Name"}
@@ -63,7 +67,13 @@ const BilingDetails = ({Title}) => {
               />
             </div>
             <div>
-              <select name="Country" id="Country"  className={"w-[500px] pl-3 border-[1px] border-slate-300 py-1 cursor-pointer"}>
+              <select
+                name="Country"
+                id="Country"
+                className={
+                  "w-[500px] pl-3 border-[1px] border-slate-300 py-1 cursor-pointer"
+                }
+              >
                 <option value="bangladesh">Bangladesh</option>
                 <option value="india">India</option>
                 <option value="pakistan">Pakistan</option>
@@ -111,6 +121,11 @@ const BilingDetails = ({Title}) => {
                 InputPlaceHolder={"Enter Your Number Here"}
                 className={"w-[500px] border-[1px] pl-3 border-slate-300 py-1"}
               />
+            </div>
+            <div className="py-10">
+              <button className="w-[500px] hover:bg-green-500 py-2 bg-Btn_Color text-Common_Color font-bold text-base">
+                Proceed To Order
+              </button>
             </div>
           </Flex>
         </div>

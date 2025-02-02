@@ -1,8 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Card from '../../CommonComponent/Card/Card';
 import Flex from '../../CommonComponent/Flex/Flex';
+import { FeatcherProduct } from '../../Redux/ProductSlice/ProductSlice';
+import { useDispatch,useSelector } from 'react-redux';
 
 const NewArraival = () => {
+
+const dispatch = useDispatch();
+const[ArrivalData,setArrivalData] = useState([]);
+
+useEffect(() => {
+   dispatch(FeatcherProduct());
+},[])
+
+const{ Data ,Status}=useSelector((state) => state.Product);
+
+
+useEffect(() => {
+   if(Status.payload === "Idle"){
+    setArrivalData(Data.payload);
+   };
+},[Status.payload,Data.payload])
+
+console.log(ArrivalData);
+
   return (
     <>
       <div className="py-10">
@@ -24,33 +45,15 @@ const NewArraival = () => {
                 "flex flex-wrap  items-center justify-center xl:justify-start  gap-x-3 lg:gap-x-12 overflow-hidden bg-slate-100 md:bg-transparent"
               }
             >
-              <div className="py-4">
-                <Card />
-              </div>
-              <div className="py-4">
-                <Card />
-              </div>
-              <div className="py-4">
-                <Card />
-              </div>
-              <div className="py-4">
-                <Card />
-              </div>
-              <div className="py-4">
-                <Card />
-              </div>
-              <div className="py-4">
-                <Card />
-              </div>
-              <div className="py-4">
-                <Card />
-              </div>
-              <div className="py-4">
-                <Card />
-              </div>
-              <div className="py-4">
-                <Card />
-              </div>
+              {ArrivalData?.map((item) => (
+                <div className="py-4" key={item.id}>
+                  <Card
+                    Title={item.title.slice(0,15)}
+                    Arrivalpic={item.thumbnail}
+                    Price={item.price}
+                  />
+                </div>
+              ))}
             </Flex>
           </div>
         </div>
