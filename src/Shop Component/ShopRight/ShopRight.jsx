@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 const ShopRight = ({className}) => {
 
 const dispatch =  useDispatch();
-const[AllData,setAllData] = useState({})
+const[AllData,setAllData] = useState([])
 
 
 useEffect(() => {
@@ -18,15 +18,16 @@ useEffect(() => {
 },[])
 
 
-const {Data,Status}=useSelector((state) => state.Product);
+const{Data,Status}=useSelector((state) => state.Product);
 
-console.log(Data);
+
 
 useEffect(() => {
    if(Status.payload === "Idle"){
-    setAllData(Data.payload);
-   };
+    setAllData(Data.payload.products);
+   }
 },[Status.payload,Data.payload])
+
 
 
 
@@ -41,7 +42,7 @@ useEffect(() => {
             <Flex
               className={"flex-wrap items-center gap-x-4 gap-y-6 mt-10 mb-10"}
             >
-              {AllData?.slice(1, 9).map((item) => (
+              {AllData?.slice(1,12).map((item) => (
                 <div key={item.id}>
                   <Link to={`/product-details/${item.id}`}>
                     <RightDetails

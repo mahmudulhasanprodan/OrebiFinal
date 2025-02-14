@@ -18,11 +18,10 @@ const{ Data ,Status}=useSelector((state) => state.Product);
 
 useEffect(() => {
    if(Status.payload === "Idle"){
-    setArrivalData(Data.payload);
+    setArrivalData(Data.payload.products);
    };
 },[Status.payload,Data.payload])
 
-console.log(ArrivalData);
 
   return (
     <>
@@ -32,7 +31,7 @@ console.log(ArrivalData);
             <div className="">
               <div className="border-b-[1px] border-gray-300 flex items-center justify-between pr-3">
                 <h2 className="p-4 font-Lato text-2xl font-bold tracking-tighter text-Btn_Color">
-                  {" "}
+              
                   New Arrival
                 </h2>
                 <button className="px-8 py-2 bg-Btn_Color text-Common_Color">

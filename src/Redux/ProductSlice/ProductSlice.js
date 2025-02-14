@@ -32,8 +32,9 @@ export const FeatcherProduct = (apiUrl) => {
   return async function GetProduct(dispatch,getState) {
       try {
         dispatch(SetStatus(ApiStatus.LOADING));
-        const response = await fetch("https://dummyjson.com/products");
+        const response = await fetch(apiUrl);
         const JasonData = await response.json();
+        console.log(JasonData);     
         dispatch(SetProduct(JasonData));    
         dispatch(SetStatus(ApiStatus.IDLE));
       } catch (error) {
