@@ -14,6 +14,8 @@ const[DataOne,setDataOne] = useState(DropdownData);
 const[DataTwo,setDataTwo] = useState(DropdownShowData);
 
 
+
+
   return (
     <>
       <div className="py-2 bg-slate-100 shadow-md">
@@ -55,11 +57,9 @@ const[DataTwo,setDataTwo] = useState(DropdownShowData);
               >
                 <option value="Select Item">Select Item</option>
                 {DataTwo?.map((item) => (
-                  <div key={item.product}>
-                    <option value={item.product}>
-                      {item.product}
-                    </option>
-                  </div>
+                  <option value={item.product} key={item.product}>
+                    {item.product}
+                  </option>
                 ))}
               </select>
             </div>

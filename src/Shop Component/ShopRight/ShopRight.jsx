@@ -4,27 +4,30 @@ import { FeatcherProduct } from '../../Redux/ProductSlice/ProductSlice'
 import { useDispatch,useSelector } from 'react-redux'
 import RightDetails from '../RightDetails/RightDetails'
 import Flex from '../../CommonComponent/Flex/Flex'
+import { Link } from 'react-router-dom'
 
 
 const ShopRight = ({className}) => {
 
 const dispatch =  useDispatch();
-const[AllData,setAllData] = useState([])
+const[AllData,setAllData] = useState({})
+
 
 useEffect(() => {
-  dispatch(FeatcherProduct());
+  dispatch(FeatcherProduct("https://dummyjson.com/products"));
 },[])
 
 
 const {Data,Status}=useSelector((state) => state.Product);
 
-console.log(Status.payload);
+console.log(Data);
 
 useEffect(() => {
    if(Status.payload === "Idle"){
     setAllData(Data.payload);
    };
 },[Status.payload,Data.payload])
+
 
 
   return (
@@ -34,19 +37,23 @@ useEffect(() => {
           <div>
             <RightTop />
           </div>
-          <Flex
-            className={"flex-wrap items-center gap-x-4 gap-y-6 mt-10 mb-10"}
-          >
-            {AllData?.slice(9).map((item) => (
-              <div key={item.id}>
-                <RightDetails
-                  Title={item.title.slice(0,20)}
-                  Price={item.price}
-                  ShopImage={item.thumbnail}
-                />
-              </div>
-            ))}
-          </Flex>
+          <div>
+            <Flex
+              className={"flex-wrap items-center gap-x-4 gap-y-6 mt-10 mb-10"}
+            >
+              {AllData?.slice(1, 9).map((item) => (
+                <div key={item.id}>
+                  <Link to={`/product-details/${item.id}`}>
+                    <RightDetails
+                      Title={item.title.slice(0, 20)}
+                      Price={item.price}
+                      ShopImage={item.thumbnail}
+                    />
+                  </Link>
+                </div>
+              ))}
+            </Flex>
+          </div>
         </div>
       </div>
     </>

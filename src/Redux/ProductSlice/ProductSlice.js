@@ -34,7 +34,7 @@ export const FeatcherProduct = (apiUrl) => {
         dispatch(SetStatus(ApiStatus.LOADING));
         const response = await fetch("https://dummyjson.com/products");
         const JasonData = await response.json();
-        dispatch(SetProduct(JasonData.products));
+        dispatch(SetProduct(JasonData));    
         dispatch(SetStatus(ApiStatus.IDLE));
       } catch (error) {
         dispatch(SetStatus(ApiStatus.ERROR));

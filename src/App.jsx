@@ -7,6 +7,7 @@ import Contact from './Pages/Contact/Contact';
 import SignUp from './Pages/SignUp/SignUp';
 import Account from './Pages/Account/Account';
 import Billing from './Pages/Billing/Billing';
+import ProductDetails from './Pages/ProductDeatails/ProductDetails';
 
 import {
   createBrowserRouter,
@@ -25,6 +26,7 @@ const router = createBrowserRouter(
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/account" element={<Account />}></Route>
       <Route path="/billing" element={<Billing />}></Route>
+      <Route path="/product-details/:ProductId" element={<ProductDetails />}></Route>
     </Route>
   ),
 );

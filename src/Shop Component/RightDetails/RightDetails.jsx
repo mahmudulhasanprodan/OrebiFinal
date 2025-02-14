@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
-
+import React, { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 
 
 const RightDetails = ({Title,ShopImage,Price}) => {
 
-
+const Navigate = useNavigate();
 const[MouseEnter,setMouseEnter] = useState(false)
+
 
 // HandleEnter Function Start Here
 const HandleEnter = () => {
@@ -16,6 +17,15 @@ const HandleEnter = () => {
 const HandleLeave = () => {
     setMouseEnter(false);
 };
+
+
+
+
+
+
+
+// HandleDetailsData Function Data is Here
+
 
 
   return (
@@ -46,7 +56,7 @@ const HandleLeave = () => {
                 {Title ? `${Title}...` : "Basic Crew Neck Tee"}
               </h2>
               <p className="font-DM_Sans font-bold text-sm text-Text_ColorTwo">
-                {Price ? Price : "$44.00"}
+                {Price ? `$${Math.round(Price)}` : "$44.00"}
               </p>
             </div>
             <div>
