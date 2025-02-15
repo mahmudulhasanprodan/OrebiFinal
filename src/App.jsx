@@ -8,6 +8,9 @@ import SignUp from './Pages/SignUp/SignUp';
 import Account from './Pages/Account/Account';
 import Billing from './Pages/Billing/Billing';
 import ProductDetails from './Pages/ProductDeatails/ProductDetails';
+import Cart from './Pages/Cart/Cart';
+import { ToastContainer } from 'react-toastify';
+
 
 import {
   createBrowserRouter,
@@ -27,6 +30,7 @@ const router = createBrowserRouter(
       <Route path="/account" element={<Account />}></Route>
       <Route path="/billing" element={<Billing />}></Route>
       <Route path="/product-details/:ProductId" element={<ProductDetails />}></Route>
+      <Route path="/cart" element={<Cart />}></Route>
     </Route>
   ),
 );
@@ -35,6 +39,7 @@ const App = () => {
   return (
     <>
       <RouterProvider router={router}></RouterProvider>
+      <ToastContainer />
     </>
   );
 }

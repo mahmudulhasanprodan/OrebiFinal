@@ -1,7 +1,7 @@
 import React from 'react'
 import { FaMinus, FaPlus } from 'react-icons/fa6';
 
-const ProductInfo = () => {
+const ProductInfo = ({AddToCartData}) => {
   return (
     <>
       <div className="pt-4">
@@ -55,7 +55,10 @@ const ProductInfo = () => {
               Add to Wish List
             </button>
             <button />
-            <button className="rounded bg-BtnColor px-10 py-2 font-DMsans text-base font-bold text-Common_Color bg-black active:bg-green-400">
+            <button
+              className="rounded bg-BtnColor px-10 py-2 font-DMsans text-base font-bold text-Common_Color bg-black active:bg-green-400"
+              onClick={AddToCartData}
+            >
               Add to Cart
             </button>
           </div>
