@@ -1,9 +1,142 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BreadCrumb from '../../CommonComponent/BreadCrumb/BreadCrumb';
 import SignForm from './SignForm';
 import Flex from '../../CommonComponent/Flex/Flex';
 
 const SignUpDetails = ({Title}) => {
+
+  const[ShowInput,setShowInput]=useState({
+    FirstName: "",
+    LastName: "",
+    EmailId: "",
+    Number: "",
+    AddressOne: "",
+    AddressTwo: "",
+    Password: "",
+    RepeatPassword: "",
+    Checkbox: false,
+  });
+
+  const[ShowInputError,setShowInputError]=useState({
+    FirstNameError: "",
+    EmailIdError: "",
+    NumberError: "",
+    AddressOneError: "",
+    PasswordError: "",
+    RepeatPasswordError: "",
+    PasswordNotMatch: "",
+  });
+
+// HandleChange Function Start Here
+const HandleChange = (e) =>{
+  console.log();
+  if(e.target.checked){
+    setShowInput({
+      [e.target.id]: true,
+  })
+  }else{
+    setShowInput({
+      [e.target.id]: e.target.value,
+    });
+  }
+
+};
+
+
+// HandleSignUp Function Start Here
+const HandleSignUp = () => {
+    const {
+      FirstName,
+      EmailId,
+      Number,
+      AddressOne,
+      Password,
+      RepeatPassword,
+    } = ShowInput;
+
+    if (!FirstName) {
+      setShowInputError({
+        ...ShowInputError,
+        EmailIdError: "",
+        NumberError: "",
+        AddressOneError: "",
+        PasswordError: "",
+        RepeatPasswordError: "",
+        PasswordNotMatch: "",
+        FirstNameError: "First name Missing",
+      });  
+    }else if(!EmailId){
+      setShowInputError({
+        ...ShowInputError,
+        FirstNameError: "",
+        NumberError: "",
+        AddressOneError: "",
+        PasswordError: "",
+        RepeatPasswordError: "",
+        PasswordNotMatch: "",
+        EmailIdError: "Email id Missing",
+      });    
+    }else if(!Number){
+      setShowInputError({
+        ...ShowInputError,
+        FirstNameError: "",
+        EmailIdError: "",
+        AddressOneError: "",
+        PasswordError: "",
+        RepeatPasswordError: "",
+        PasswordNotMatch: "",
+        NumberError: "Number Missing",
+      });   
+    }else if(!AddressOne){
+      setShowInputError({
+        ...ShowInputError,
+        FirstNameError: "",
+        EmailIdError: "",
+        NumberError: "",
+        AddressOneError: "",
+        PasswordError: "",
+        RepeatPasswordError: "",
+        PasswordNotMatch: "",
+        AddressOneError: "Address Missing",
+      });   
+    }else if(!Password){
+      setShowInputError({
+        ...ShowInputError,
+        FirstNameError: "",
+        EmailIdError: "",
+        NumberError: "",
+        AddressOneError: "",
+        RepeatPasswordError: "",
+        PasswordNotMatch: "",
+        PasswordError: "Password Missing",
+      });  
+    }else if(!RepeatPassword){
+      setShowInputError({
+        ...ShowInputError,
+        FirstNameError: "",
+        EmailIdError: "",
+        NumberError: "",
+        AddressOneError: "",
+        PasswordError: "",
+        PasswordNotMatch: "",
+        RepeatPasswordError: "Repeat Password Missing",
+      }); 
+    }else if(Password !== RepeatPassword){
+      setShowInputError({
+        ...ShowInputError,
+        FirstNameError: "",
+        EmailIdError: "",
+        NumberError: "",
+        AddressOneError: "",
+        PasswordError: "",
+        RepeatPasswordError: "",
+        PasswordNotMatch: "Password Not Match",
+      }); 
+    }else{
+      console.log("everything is ok");    
+    }
+};
+
   return (
     <>
       <div>
@@ -41,7 +174,9 @@ const SignUpDetails = ({Title}) => {
                     InputName={"FirstName"}
                     InputPlaceHolder={"Enter Your First Name Here"}
                     className={"border-b-[1px] border-b-slate-300 py-1"}
+                    OnchangeItem={HandleChange}
                   />
+                 
                 </div>
                 <div className="basis-1/3">
                   <SignForm
@@ -51,6 +186,7 @@ const SignUpDetails = ({Title}) => {
                     InputName={"LastName"}
                     InputPlaceHolder={"Enter Your Last Name Here"}
                     className={"border-b-[1px] border-b-slate-300 py-1"}
+                    OnchangeItem={HandleChange}
                   />
                 </div>
               </div>
@@ -63,6 +199,7 @@ const SignUpDetails = ({Title}) => {
                     InputName={"EmailId"}
                     InputPlaceHolder={"Enter Your Email Here"}
                     className={"border-b-[1px] border-b-slate-300 py-1"}
+                    OnchangeItem={HandleChange}
                   />
                 </div>
                 <div className="basis-1/3">
@@ -73,6 +210,7 @@ const SignUpDetails = ({Title}) => {
                     InputName={"Number"}
                     InputPlaceHolder={"Enter Your Number Here"}
                     className={"border-b-[1px] border-b-slate-300 py-1"}
+                    OnchangeItem={HandleChange}
                   />
                 </div>
               </div>
@@ -85,6 +223,7 @@ const SignUpDetails = ({Title}) => {
                     InputName={"AddressOne"}
                     InputPlaceHolder={"Enter Your Address1 Here"}
                     className={"border-b-[1px] border-b-slate-300 py-1"}
+                    OnchangeItem={HandleChange}
                   />
                 </div>
                 <div className="basis-1/3">
@@ -95,6 +234,7 @@ const SignUpDetails = ({Title}) => {
                     InputName={"AddressTwo"}
                     InputPlaceHolder={"Enter Your Address2 Here"}
                     className={"border-b-[1px] border-b-slate-300 py-1"}
+                    OnchangeItem={HandleChange}
                   />
                 </div>
               </div>
@@ -107,6 +247,7 @@ const SignUpDetails = ({Title}) => {
                     InputName={"Password"}
                     InputPlaceHolder={"Enter Your Password Here"}
                     className={"border-b-[1px] border-b-slate-300 py-1"}
+                    OnchangeItem={HandleChange}
                   />
                 </div>
                 <div className="basis-1/3">
@@ -117,6 +258,7 @@ const SignUpDetails = ({Title}) => {
                     InputName={"RepeatPassword"}
                     InputPlaceHolder={"Enter Your Repeat Password Here"}
                     className={"border-b-[1px] border-b-slate-300 py-1"}
+                    OnchangeItem={HandleChange}
                   />
                 </div>
               </div>
@@ -126,18 +268,19 @@ const SignUpDetails = ({Title}) => {
                   id="Checkbox"
                   name="Checkbox"
                   className="cursor-pointer"
+                  onChange={HandleChange}
                 />
                 <p className="font-DM_Sans text-sm md:text-base text-Btn_Color">
                   I have read and agree to the Privacy and Policy
                 </p>
               </div>
               <div>
-                <button className="w-[200px] py-2 bg-blue-500 font-DM_Sans font-bold text-base text-Common_Color rounded-md">
+                <button className="w-[200px] py-2 bg-blue-500 font-DM_Sans font-bold text-base text-Common_Color rounded-md" onClick={HandleSignUp}>
                   Sign Up
                 </button>
-                {/* <button type="button" class="bg-indigo-500 w-[200px] px-10 py-2 flex items-center justify-center rounded-md" >
+                {/* <button type="button" className="bg-indigo-500 w-[200px] px-10 py-2 flex items-center justify-center rounded-md" >
                   <svg
-                    class="animate-spin h-5 w-5 mr-3 border-4 rounded-full border-t-4 border-green-500 border-b-white"
+                    className="animate-spin h-5 w-5 mr-3 border-4 rounded-full border-t-4 border-green-500 border-b-white"
                     viewBox="0 0 24 24"
                   ></svg>
                   Processing...

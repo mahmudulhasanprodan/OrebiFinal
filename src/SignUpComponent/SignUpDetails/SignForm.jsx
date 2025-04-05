@@ -1,7 +1,7 @@
 import React from 'react'
 import Flex from '../../CommonComponent/Flex/Flex';
 
-const SignForm = ({LabelTitle,InputType,InputId,InputName,InputPlaceHolder,className}) => {
+const SignForm = ({LabelTitle,InputType,InputId,InputName,InputPlaceHolder,className,OnchangeItem}) => {
   return (
     <>
       <div>
@@ -18,6 +18,7 @@ const SignForm = ({LabelTitle,InputType,InputId,InputName,InputPlaceHolder,class
             name={InputName}
             placeholder={InputPlaceHolder}
             className={className}
+            onChange={OnchangeItem}
           />
         </Flex>
       </div>

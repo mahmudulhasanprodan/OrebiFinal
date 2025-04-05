@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import MainLogo from "../../assets/HomeComponentImage/Logo.png"
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import Flex from '../../CommonComponent/Flex/Flex';
 import { FaBars } from "react-icons/fa";
 import { IoHome } from "react-icons/io5";
@@ -49,15 +49,20 @@ useEffect(() => {
 
   
   return (
-    <div className="bg-Common_Color fixed md:static z-10 md:z-0 w-full md:w-[100%]" ref={BarIcon}>
+    <div
+      className="bg-Common_Color fixed md:static z-10 md:z-0 w-full md:w-[100%]"
+      ref={BarIcon}
+    >
       <div className="container">
         <Flex className={"items-center justify-between py-4 px-4 2xl:px-0"}>
           <div className="cursor-pointer md:hidden lg:block">
             <picture>
-              <img src={MainLogo} alt={MainLogo} />
+              <Link to={"/"}>
+                <img src={MainLogo} alt={MainLogo} />
+              </Link>
             </picture>
           </div>
-          <div className={"flex items-center gap-x-48 md:gap-x-32 lg:gap-x-48"} >
+          <div className={"flex items-center gap-x-48 md:gap-x-32 lg:gap-x-48"}>
             <div
               className={`absolute z-10 md:z-0 flex flex-col items-center gap-x-24 md:static md:flex-row ${MenubarOpen ? "right-0 top-10 h-[300px] w-48 bg-slate-200 py-2 transition-all delay-150 ease-in-out md:h-0" : "right-[-100%] top-0 h-[200px] transition-all delay-150 ease-in-out md:h-0"}`}
             >

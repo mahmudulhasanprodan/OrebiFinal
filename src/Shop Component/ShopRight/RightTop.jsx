@@ -8,7 +8,7 @@ import { DropdownData,DropdownShowData } from '../../../JsonData/JsonData';
 
 
 
-const RightTop = () => {
+const RightTop = ({OnShowItem}) => {
 
 const[DataOne,setDataOne] = useState(DropdownData);
 const[DataTwo,setDataTwo] = useState(DropdownShowData);
@@ -54,6 +54,7 @@ const[DataTwo,setDataTwo] = useState(DropdownShowData);
                 name="ItemList"
                 id="ItemList"
                 className="w-32 border-2 border-slate-200 py-1 px-1 cursor-pointer"
+                onChange={OnShowItem}
               >
                 <option value="Select Item">Select Item</option>
                 {DataTwo?.map((item) => (

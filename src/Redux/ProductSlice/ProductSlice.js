@@ -33,14 +33,12 @@ export const FeatcherProduct = (apiUrl) => {
       try {
         dispatch(SetStatus(ApiStatus.LOADING));
         const response = await fetch(apiUrl);
-        const JasonData = await response.json();
-        console.log(JasonData);     
+        const JasonData = await response.json();    
         dispatch(SetProduct(JasonData));    
         dispatch(SetStatus(ApiStatus.IDLE));
       } catch (error) {
         dispatch(SetStatus(ApiStatus.ERROR));
-        console.log(error);
-        
+        console.log(error);      
       }     
   };
 };
