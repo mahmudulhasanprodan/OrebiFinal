@@ -5,7 +5,7 @@ const SignForm = ({LabelTitle,InputType,InputId,InputName,InputPlaceHolder,class
   return (
     <>
       <div>
-        <Flex className={"flex-col"}>
+        <Flex className={"flex-col gap-y-4"}>
           <label
             htmlFor="LabelTitle"
             className="font-DM_Sans text-lg font-bold text-Btn_Color"

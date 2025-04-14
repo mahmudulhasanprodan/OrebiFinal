@@ -56,6 +56,7 @@ const HandleSignUp = () => {
       AddressOne,
       Password,
       RepeatPassword,
+      Checkbox,
     } = ShowInput;
    if(!FistName){
     setShowInputError({
@@ -97,10 +98,10 @@ const HandleSignUp = () => {
       ...ShowInputError,
       PasswordNotMatch: "Password Not Match",
     })
-   }else if(!Checkbox){
+   }else if(Checkbox == false){
     setShowInputError({
       ...ShowInputError,
-      CheckboxError: "Checkbox Not Check",
+      CheckboxError: true,
     })
    }else{
     console.log("Everything is Ok");  
@@ -135,122 +136,167 @@ const HandleSignUp = () => {
                 Your Personals Destails
               </h2>
             </div>
-          </div>
-          <Flex className={"items-center gap-x-8 gap-y-8 flex-wrap"}>
-            <div className="basis-1/3">
-              <SignForm
-                LabelTitle={"First Name"}
-                InputType={"text"}
-                InputId={"FistName"}
-                InputName={"FistName"}
-                InputPlaceHolder={"Enter Your First Name"}
-                className={`${ShowInputError.FirstNameError ? "border-b-[1px] border-b-red-400 py-1" : "border-b-[1px] border-gray-300 py-1"}`}
-                OnchangeItem={HandleChange}
+            <Flex className={"items-center gap-x-8 gap-y-8 flex-wrap mt-10"}>
+              <div className="basis-1/3">
+                <SignForm
+                  LabelTitle={"First Name"}
+                  InputType={"text"}
+                  InputId={"FistName"}
+                  InputName={"FistName"}
+                  InputPlaceHolder={"Enter Your First Name"}
+                  className={`${ShowInputError.FirstNameError ? "border-b-[1px] border-b-red-400 py-1" : "border-b-[1px] border-gray-300 py-1"}`}
+                  OnchangeItem={HandleChange}
+                />
+
+                {ShowInputError.FirstNameError && (
+                  <p className="text-red-500 font-DM_Sans">
+                    {ShowInputError.FirstNameError}
+                  </p>
+                )}
+              </div>
+              <div className="basis-1/3">
+                <SignForm
+                  LabelTitle={"Last Name"}
+                  InputType={"text"}
+                  InputId={"LastName"}
+                  InputName={"LastName"}
+                  InputPlaceHolder={"Enter Your Last Name"}
+                  className={`${ShowInputError.LastNameError ? "border-b-[1px] border-b-red-400 py-1" : "border-b-[1px] border-gray-300 py-1"}`}
+                  OnchangeItem={HandleChange}
+                />
+                {ShowInputError.LastNameError && (
+                  <p className="text-red-500 font-DM_Sans">
+                    {ShowInputError.LastNameError}
+                  </p>
+                )}
+              </div>
+              <div className="basis-1/3">
+                <SignForm
+                  LabelTitle={"Email"}
+                  InputType={"email"}
+                  InputId={"EmailId"}
+                  InputName={"EmailId"}
+                  InputPlaceHolder={"Enter Your Email Here"}
+                  className={`${ShowInputError.EmailIdError ? "border-b-[1px] border-b-red-400 py-1" : "border-b-[1px] border-gray-300 py-1"}`}
+                  OnchangeItem={HandleChange}
+                />
+                {ShowInputError.EmailIdError && (
+                  <p className="text-red-500 font-DM_Sans">
+                    {ShowInputError.EmailIdError}
+                  </p>
+                )}
+              </div>
+              <div className="basis-1/3">
+                <SignForm
+                  LabelTitle={"Phone Number"}
+                  InputType={"number"}
+                  InputId={"Number"}
+                  InputName={"Number"}
+                  InputPlaceHolder={"Enter Your Number Here"}
+                  className={`${ShowInputError.NumberError ? "border-b-[1px] border-b-red-400 py-1" : "border-b-[1px] border-gray-300 py-1"}`}
+                  OnchangeItem={HandleChange}
+                />
+                {ShowInputError.NumberError && (
+                  <p className="text-red-500 font-DM_Sans">
+                    {ShowInputError.NumberError}
+                  </p>
+                )}
+              </div>
+              <div className="basis-1/3">
+                <SignForm
+                  LabelTitle={"AddressOne"}
+                  InputType={"text"}
+                  InputId={"AddressOne"}
+                  InputName={"AddressOne"}
+                  InputPlaceHolder={"Enter Your Address Here"}
+                  className={`${ShowInputError.AddressOneError ? "border-b-[1px] border-b-red-400 py-1" : "border-b-[1px] border-gray-300 py-1"}`}
+                  OnchangeItem={HandleChange}
+                />
+                {ShowInputError.AddressOneError && (
+                  <p className="text-red-500 font-DM_Sans">
+                    {ShowInputError.AddressOneError}
+                  </p>
+                )}
+              </div>
+              <div className="basis-1/3">
+                <SignForm
+                  LabelTitle={"AddressTwo"}
+                  InputType={"password"}
+                  InputId={"AddressTwo"}
+                  InputName={"AddressTwo"}
+                  InputPlaceHolder={"Enter Your Address Two Here"}
+                  className={"border-b-[1px] border-gray-300 py-1"}
+                  OnchangeItem={HandleChange}
+                />
+              </div>
+              <div className="basis-1/3">
+                <SignForm
+                  LabelTitle={"Password"}
+                  InputType={"password"}
+                  InputId={"Password"}
+                  InputName={"Password"}
+                  InputPlaceHolder={"Enter Your Password Here"}
+                  className={`${ShowInputError.PasswordError ? "border-b-[1px] border-b-red-400 py-1" : "border-b-[1px] border-gray-300 py-1"}`}
+                  OnchangeItem={HandleChange}
+                />
+                {ShowInputError.PasswordError && (
+                  <p className="text-red-500 font-DM_Sans">
+                    {ShowInputError.PasswordError}
+                  </p>
+                )}
+              </div>
+              <div className="basis-1/3">
+                <SignForm
+                  LabelTitle={"Repeat Password"}
+                  InputType={"password"}
+                  InputId={"RepeatPassword"}
+                  InputName={"RepeatPassword"}
+                  InputPlaceHolder={"Enter Your Repeat Password Here"}
+                  className={`${ShowInputError.RepeatPasswordError ? "border-b-[1px] border-b-red-400 py-1" : "border-b-[1px] border-gray-300 py-1"}`}
+                  OnchangeItem={HandleChange}
+                />
+                {ShowInputError.RepeatPasswordError && (
+                  <p className="text-red-500 font-DM_Sans">
+                    {ShowInputError.RepeatPasswordError}
+                  </p>
+                )}
+              </div>
+            </Flex>
+            <div className="flex items-center gap-x-3 mt-10">
+              <input
+                type="checkbox"
+                id="Checkbox"
+                name="Checkbox"
+                className="cursor-pointer"
+                onClick={HandleChange}
               />
 
-              {ShowInputError.FirstNameError && (
-                <p className="text-red-500 font-DM_Sans">
-                  {ShowInputError.FirstNameError}
-                </p>
-              )}
+              <p
+                className={`${ShowInputError.CheckboxError ? "font-DM_Sans text-base text-red-400" : "font-DM_Sans text-base text-Text_Color"}`}
+              >
+                {ShowInputError.CheckboxError
+                  ? "Please Check the mark"
+                  : "I have read and agree to the privacy policy"}
+              </p>
             </div>
-            <div className="basis-1/3">
-              <SignForm
-                LabelTitle={"Last Name"}
-                InputType={"text"}
-                InputId={"LastName"}
-                InputName={"LastName"}
-                InputPlaceHolder={"Enter Your Last Name"}
-                className={"border-b-[1px] border-gray-300 py-1"}
-                OnchangeItem={HandleChange}
-              />
+            <div>
+              <button
+                className="w-48 py-2 bg-Btn_Color mt-10 text-white font-bold rounded-md"
+                onClick={HandleSignUp}
+              >
+                Submit
+              </button>
+              {/* <button
+                type="button"
+                className="bg-indigo-500 w-48 py-2 flex items-center rounded-md justify-center text-Common_Color font-DM_Sans font-bold"
+              >
+                <svg
+                  className="animate-spin h-5 w-5 mr-3 border-4 border-gray-50 border-b-4 border-b-green-500  rounded-full"
+                  viewBox="0 0 24 24"
+                ></svg>
+                Processing...
+              </button> */}
             </div>
-            <div className="basis-1/3">
-              <SignForm
-                LabelTitle={"Email"}
-                InputType={"email"}
-                InputId={"EmailId"}
-                InputName={"EmailId"}
-                InputPlaceHolder={"Enter Your Email Here"}
-                className={"border-b-[1px] border-gray-300 py-1"}
-                OnchangeItem={HandleChange}
-              />
-            </div>
-            <div className="basis-1/3">
-              <SignForm
-                LabelTitle={"Phone Number"}
-                InputType={"number"}
-                InputId={"Number"}
-                InputName={"Number"}
-                InputPlaceHolder={"Enter Your Number Here"}
-                className={"border-b-[1px] border-gray-300 py-1"}
-                OnchangeItem={HandleChange}
-              />
-            </div>
-            <div className="basis-1/3">
-              <SignForm
-                LabelTitle={"AddressOne"}
-                InputType={"text"}
-                InputId={"AddressOne"}
-                InputName={"AddressOne"}
-                InputPlaceHolder={"Enter Your Address Here"}
-                className={"border-b-[1px] border-gray-300 py-1"}
-                OnchangeItem={HandleChange}
-              />
-            </div>
-            <div className="basis-1/3">
-              <SignForm
-                LabelTitle={"AddressTwo"}
-                InputType={"password"}
-                InputId={"AddressTwo"}
-                InputName={"AddressTwo"}
-                InputPlaceHolder={"Enter Your Address Two Here"}
-                className={"border-b-[1px] border-gray-300 py-1"}
-                OnchangeItem={HandleChange}
-              />
-            </div>
-            <div className="basis-1/3">
-              <SignForm
-                LabelTitle={"Password"}
-                InputType={"password"}
-                InputId={"Password"}
-                InputName={"Password"}
-                InputPlaceHolder={"Enter Your Password Here"}
-                className={"border-b-[1px] border-gray-300 py-1"}
-                OnchangeItem={HandleChange}
-              />
-            </div>
-            <div className="basis-1/3">
-              <SignForm
-                LabelTitle={"Repeat Password"}
-                InputType={"password"}
-                InputId={"RepeatPassword"}
-                InputName={"RepeatPassword"}
-                InputPlaceHolder={"Enter Your Repeat Password Here"}
-                className={"border-b-[1px] border-gray-300 py-1"}
-                OnchangeItem={HandleChange}
-              />
-            </div>
-          </Flex>
-          <div className="flex items-center gap-x-3 mt-10">
-            <input
-              type="checkbox"
-              id="Checkbox"
-              name="Checkbox"
-              className="cursor-pointer"
-              onClick={HandleChange}
-            />
-            <p className="font-DM_Sans text-base text-Text_Color">
-              I have read and agree to the privacy policy
-            </p>
-          </div>
-          <div>
-            <button
-              className="w-48 py-2 bg-Btn_Color mt-10 text-white font-bold"
-              onClick={HandleSignUp}
-            >
-              Submit
-            </button>
           </div>
         </div>
       </div>
