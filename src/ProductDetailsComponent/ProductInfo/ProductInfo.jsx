@@ -1,5 +1,7 @@
 import React from 'react'
 import { FaMinus, FaPlus } from 'react-icons/fa6';
+import FeturesData from '../FeturesData/FeturesData';
+import ReviewPart from '../ReviewPart/ReviewPart';
 
 const ProductInfo = ({AddToCartData}) => {
   return (
@@ -63,6 +65,13 @@ const ProductInfo = ({AddToCartData}) => {
             </button>
           </div>
           {/* {Wishlist and add to cart par}  */}
+          <div className="mt-10">
+              <FeturesData Title={"FEATURES & DETAILS"}/>
+              <hr className="w-[60%]"/>
+          </div>
+          <div>
+            <ReviewPart />
+          </div>
         </div>
       </div>
     </>

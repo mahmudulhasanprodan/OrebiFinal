@@ -40,6 +40,7 @@ const HandleCart = () => {
 };
  
   
+console.log(DetailsData);
 
 
   return (

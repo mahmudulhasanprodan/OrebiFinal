@@ -5,6 +5,9 @@ import SignForm from './SignForm';
 import Flex from '../../CommonComponent/Flex/Flex';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import {toast,Bounce} from 'react-toastify';
+import { db } from '../../../Firebase/FirebaseSDK';
+import { collection, addDoc } from "firebase/firestore"; 
+
 
 const SignUpDetails = ({Title}) => {
   const auth = getAuth(fireapp);
@@ -158,7 +161,7 @@ const HandleSignUp = () => {
       RepeatPasswordError: "",
       PasswordNotMatch: "Password Not Match",
     })
-   }else if(Checkbox == false){
+   }else if(Checkbox === false){
     setShowInputError({
       ...ShowInputError,
       FirstNameError: "",
@@ -187,6 +190,12 @@ const HandleSignUp = () => {
       transition: Bounce,
       });
     
+   }).then(() => {
+      addDoc(collection(db,"signUp/"),ShowInput).then((UserInfo) => {
+        console.log(UserInfo);
+      }).catch((error) => {
+        console.log(error);
+      })
    }).catch((error) => {
     toast.error(`${error.code}`, {
       position: "top-bottom",
