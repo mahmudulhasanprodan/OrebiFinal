@@ -70,11 +70,54 @@ const initialState = {
             transition: Bounce,
             });      
       },
+      Increment : (state,action) => {
+        const Indexfind = state.CartItem.findIndex((item) => 
+           item.id === action.payload.id,
+          
+        );  
+        if(Indexfind >=0){
+          state.CartItem[Indexfind].CartQuantity += 1;
+          localStorage.setItem("cartItem", JSON.stringify(state.CartItem)) 
+          toast.success(`${action.payload.title} Increased`, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            transition: Bounce,
+            });
+        }
+          
+      },
+      Decrement: (state,action) => {
+        const FindIndex = state.CartItem.findIndex((item) => 
+          item.id === action.payload.id,      
+       );
+       if(state.CartItem[FindIndex].CartQuantity > 1){
+        state.CartItem[FindIndex].CartQuantity -= 1;
+        localStorage.setItem("cartItem", JSON.stringify(state.CartItem)) 
+        toast.warn(`${action.payload.title} Decreased`, {
+          position: "top-left",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+          transition: Bounce,
+          });
+       }
+       
+      }
     },
   });
 
 
   
-  export const {AddtoCart,removeItem} = CartSlice.actions
+  export const {AddtoCart,removeItem,Increment,Decrement} = CartSlice.actions
   
   export default CartSlice.reducer

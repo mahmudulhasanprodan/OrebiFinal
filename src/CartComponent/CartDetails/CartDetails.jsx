@@ -4,7 +4,7 @@ import BreadCrumb from '../../CommonComponent/BreadCrumb/BreadCrumb';
 import { FaMinus, FaPlus } from 'react-icons/fa';
 import Img from "../../assets/HomeComponentImage/Image.png"
 import { useSelector,useDispatch } from 'react-redux';
-import { removeItem } from '../../Redux/CartSlice/CartSlice';
+import { removeItem,Increment,Decrement} from '../../Redux/CartSlice/CartSlice';
 
 const CartDetails = ({Title}) => {
     const dispatch = useDispatch();
@@ -18,7 +18,15 @@ const HandleRemove = (item) => {
   dispatch(removeItem(item));
 };
 
+// HandldeIncrement function start here
+ const HandldeIncrement = (item) => {
+   dispatch(Increment(item))
+ }
 
+ //HandleDecrement Function Start Here
+ const HandleDecrement = (item) => {
+  dispatch(Decrement(item))
+ }
 
 
   return (
@@ -89,13 +97,13 @@ const HandleRemove = (item) => {
                 </div>
                 <div className="flex items-center cursor-pointer grow basis-1/5 text-center">
                   <div className="flex items-center justify-center gap-x-4 border-2 w-20 m-auto">
-                    <span className="font-bold text-sm py-1">
+                    <span className="font-bold text-sm py-1" onClick={() => HandleDecrement(item)}>
                       <FaMinus />
                     </span>
                     <p className="font-Josefin font-semibold text-FtextColor text-sm">
                       {item.CartQuantity ? item.CartQuantity : 1}
                     </p>
-                    <span className="text-sm py-1">
+                    <span className="text-sm py-1" onClick={() => HandldeIncrement(item)}>
                       <FaPlus />
                     </span>
                   </div>
