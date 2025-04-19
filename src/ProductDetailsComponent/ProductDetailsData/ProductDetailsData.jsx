@@ -36,11 +36,10 @@ useEffect(() => {
 //HandleCart Function start Here
 const HandleCart = () => {
    dispatch(AddtoCart(DetailsData));
-   Navigate("/cart")
 };
  
   
-console.log(DetailsData);
+
 
 
   return (

@@ -6,13 +6,13 @@ const initialState = {
   CartItem: localStorage.getItem("cartItem")
     ? JSON.parse(localStorage.getItem("cartItem"))
     : [],
-  TotalItem: 0,
-  TotalAmount: 0,
+    TotalAmount: 0,
+    TotalItem: 0,
 };
 
 
   export const CartSlice = createSlice({
-    name: "Cart",
+    name: "Cart", 
     initialState,
 
     reducers: {
@@ -112,12 +112,30 @@ const initialState = {
           });
        }
        
+      },
+      GetTotal: (state,action) => {
+        const AllItem = state.CartItem.reduce(
+          (prevItem, currentItem) => {
+            const { price, CartQuantity } = currentItem;
+            const TotalPrice = Math.round(price * CartQuantity);
+            prevItem.TotalAmount += TotalPrice;
+            prevItem.TotalItem += CartQuantity;
+            return prevItem;
+          },
+          {
+            TotalItem: 0,
+            TotalAmount: 0,
+          },
+        ); 
+        state.TotalAmount = AllItem.TotalAmount;
+        state.TotalItem = AllItem.TotalItem;
+                      
       }
     },
   });
 
 
   
-  export const {AddtoCart,removeItem,Increment,Decrement} = CartSlice.actions
+  export const {AddtoCart,removeItem,Increment,Decrement,GetTotal} = CartSlice.actions
   
   export default CartSlice.reducer

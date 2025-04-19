@@ -6,9 +6,10 @@ import { FaShoppingCart } from "react-icons/fa";
 import { FaCaretDown } from "react-icons/fa";
 import { FaAngleRight } from "react-icons/fa";
 import Flex from '../../CommonComponent/Flex/Flex';
-import { Link } from 'react-router-dom';
-import Imag from "../../assets/HomeComponentImage/Image.png"
+import { Link, useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { GetTotal } from '../../Redux/CartSlice/CartSlice';
 
 
 
@@ -18,7 +19,8 @@ const [AccountShow,setAccountShow] = useState(false);
 const [ShowCart,setShowCart] = useState(false);
 
 const MenuRef = useRef();
-
+const Navigate = useNavigate();
+const dispatch = useDispatch();
 
 // HandleMouseEnter Function Start Here
     const HandleMouseEnter = () => {
@@ -50,6 +52,19 @@ useEffect(() => {
   };     
  });
 },[]);
+
+const{TotalAmount,TotalItem,CartItem}=useSelector((state) => state.Cart);
+
+// HandleView  Function start here
+const HandleView = () => {
+  Navigate("/cart");
+  setShowCart(false);
+};
+
+useEffect(() => {
+   dispatch(GetTotal())
+},[CartItem])
+
 
 
   return (
@@ -181,37 +196,53 @@ useEffect(() => {
 
               <span onClick={HandleCart}>
                 <FaShoppingCart />
+                <div className="w-8 h-8 bg-gray-300 rounded-full absolute -top-6 -right-6">
+                  <p className="flex items-center justify-center h-full font-bold">
+                    {TotalItem}
+                  </p>
+                </div>
               </span>
               {ShowCart && (
                 <div className="absolute right-0 top-6 h-[500px] w-[300px] z-10">
                   <div className="absolute right-0 top-6 h-[400px] w-[300px] overflow-y-scroll scrollbar-thumb-gray-700 scrollbar-track-gray-300 scrollbar-thin  rounded-md border-[1px] border-gray-300 bg-gray-100">
-                    <div className="flex items-center justify-between border-b-[1px] border-gray-300 hover:bg-gray-300">
-                      <div className="flex items-center gap-x-3 py-2 pl-2">
-                        <picture>
-                          <img
-                            src={Imag}
-                            alt={Imag}
-                            className="h-24 w-24 border-2"
-                          />
-                        </picture>
-                        <div>
-                          <h2 className="font-Lato text-base font-semibold">
-                            Furniture....
-                          </h2>
-                          <p className="font-Lato text-sm font-semibold">
-                            $48.00
-                          </p>
+                    {CartItem?.map((item) => (
+                      <div
+                        className="flex items-center justify-between border-b-[1px] border-gray-300 hover:bg-gray-300"
+                        onClick={() => HandleDetails(item.dispatch)}
+                      >
+                        <div className="flex items-center gap-x-3 py-2 pl-2">
+                          <picture>
+                            <img
+                              src={item.thumbnail}
+                              alt={item.thumbnail}
+                              className="h-24 w-24 border-2"
+                            />
+                          </picture>
+                          <div>
+                            <h2 className="font-Lato text-base font-semibold">
+                              {item.title}
+                            </h2>
+                            <p className="font-Lato text-sm font-semibold">
+                              ${Math.round(item.price)}
+                            </p>
+                          </div>
+                        </div>
+                        <div className="pr-3">
+                          <span>
+                            <FaAngleRight />
+                          </span>
                         </div>
                       </div>
-                      <div className="pr-3">
-                        <span>
-                          <FaAngleRight />
-                        </span>
-                      </div>
-                    </div>
+                    ))}
                   </div>
-                  <div className="absolute bottom-0 right-0 h-[100px] w-[300px] rounded-b-md border-[1px] border-gray-300 bg-[#D8D8D8]">
-                    <button className="m-auto mt-6 block w-48 bg-Btn_Color py-3 font-Lato text-lg font-bold text-Common_Color hover:bg-yellow-700">
+                  <div className="absolute bottom-0 right-0 h-[100px] w-[300px] rounded-b-md border-[1px] border-gray-300 bg-[#D8D8D8] flex items-center gap-x-4">
+                    <button
+                      className="m-auto mt-6 block px-4 bg-Btn_Color py-3 font-Lato text-lg font-bold text-Common_Color hover:bg-yellow-700 rounded-md"
+                      onClick={HandleView}
+                    >
+                      View Cart
+                    </button>
+                    <button className="m-auto mt-6 block px-4 bg-Btn_Color py-3 font-Lato text-lg font-bold text-Common_Color hover:bg-yellow-700 rounded-md">
                       Cheackout
                     </button>
                   </div>
