@@ -166,7 +166,7 @@ const HandleRemove = (item) => {
                 </div>
               </div>
               <div className="flex justify-end pt-6">
-                <button className="rounded-sm bg-BtnColor px-14 py-4 font-DMsans text-base font-bold text-white active:bg-blue-400">
+                <button className="rounded-sm bg-Btn_Color px-14 py-4 font-DMsans text-base font-bold text-white active:bg-blue-400">
                   Proceed to Checkout
                 </button>
               </div>

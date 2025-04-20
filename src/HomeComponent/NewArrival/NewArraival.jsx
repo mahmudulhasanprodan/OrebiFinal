@@ -43,8 +43,16 @@ useEffect(() => {
             </div>
             <Flex>
               {Status.payload === "Loading" ? (
-                <div>
-                  <Loading className={"border flex items-center justify-center border-blue-300 shadow rounded-md p-4 max-w-sm h-[300px] w-[200px] mx-auto"}/>
+                <div className="flex items-center flex-wrap gap-x-2 gap-y-4 mt-4">
+                  {[...new Array(12)].map((item) => (
+                    <div key={item}>
+                      <Loading
+                        className={
+                          "border flex items-center justify-center border-blue-300 shadow rounded-md p-4 max-w-sm h-[300px] w-[200px] mx-auto"
+                        }
+                      />
+                    </div>
+                  ))}
                 </div>
               ) : Status.payload === "Error" ? (
                 <div>
@@ -52,12 +60,12 @@ useEffect(() => {
                 </div>
               ) : (
                 <div className="flex items-center flex-wrap xl:justify-between  overflow-hidden bg-slate-100 md:bg-transparent">
-                  {ArrivalData?.map((item) => (
+                  {ArrivalData?.slice(0,11).map((item) => (
                     <div className="py-4" key={item.id}>
                       <Card
                         Title={item.title.slice(0, 15)}
                         Arrivalpic={item.thumbnail}
-                        Price={item.price}                      
+                        Price={item.price}
                       />
                     </div>
                   ))}

@@ -1,15 +1,14 @@
 import React from 'react'
-import Header from '../../HomeComponent/Header/Header'
-import Menu from '../../HomeComponent/Menu/Menu'
 import SliderItem from '../../HomeComponent/Slider/SliderItem'
 import NewArraival from '../../HomeComponent/NewArrival/NewArraival'
-import FooterTop from '../../HomeComponent/Footer/FooterTop/FooterTop'
-import FooterBottom from '../../HomeComponent/Footer/FooterBottom/FooterBottom'
+import Offer from '../../HomeComponent/Offer/Offer'
+
 const Home = () => {
   return (
     <>
       <SliderItem />
       <NewArraival />
+      <Offer />
     </>
   );
 }
