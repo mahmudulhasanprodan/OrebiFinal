@@ -1,7 +1,56 @@
-import React from 'react'
+import React, { useState } from 'react'
 import BreadCrumb from '../../CommonComponent/BreadCrumb/BreadCrumb';
+import { CheckEmail,Message,SuccessMessage,ErrorMessage } from '../../../Utils/utils';
+import { collection, addDoc } from "firebase/firestore"; 
+import {db}from "../../../Firebase/FirebaseSDK"
+
+
 
 const ContactDetails = ({Title}) => {
+const[contactInfo,setcontactInfo] = useState({
+  PostName: "",
+  PostEmail: "",
+  MessageText: "",
+})
+
+const[loading,setloading] = useState(false);
+
+// HandlePost Function start Here
+const HandlePost = (e) => {  
+  setcontactInfo({
+      ...contactInfo,
+      [e.target.id] : e.target.value,
+    });
+};
+
+// HandlePostDetails Function start Here
+const HandlePostDetails = () => {
+  const{PostName,PostEmail,MessageText} = contactInfo;
+  if(!PostName){   
+    ErrorMessage("Name Missing")
+  }else if(!PostEmail || !CheckEmail(PostEmail)){
+    ErrorMessage("User are not valid");
+  }else if(!MessageText || !Message(MessageText)){
+    ErrorMessage("Message is Not Valid Text");
+  }else{
+    setloading(true);
+    const FromRef = collection(db, "From Post")
+    addDoc(FromRef, contactInfo).then((fromCredent) => {
+      console.log(fromCredent);
+      SuccessMessage("Everything is Ok", "top-center");
+    }).catch((error) => {
+      console.log(error);   
+    }).finally(() => {
+      setloading(false);
+      setcontactInfo({
+        PostName: "",
+        PostEmail: "",
+        MessageText: "",
+      })
+    })   
+  }
+};
+
   return (
     <>
       <div>
@@ -23,57 +72,86 @@ const ContactDetails = ({Title}) => {
                   Get More Touch
                 </h2>
               </div>
-              <div>
-                <div className="flex flex-col mt-6">
-                  <label
-                    htmlFor="#"
-                    className="font-DM_Sans font-bold text-lg text-Btn_Color"
-                  >
-                    Name
-                  </label>
+              <form action="#" onSubmit={(e) => e.preventDefault()}>
+                <div>
+                  <div className="flex flex-col mt-6">
+                    <label
+                      htmlFor="#"
+                      className="font-DM_Sans font-bold text-lg text-Btn_Color"
+                    >
+                      Name
+                    </label>
 
-                  <input
-                    type="text"
-                    id="PostName"
-                    name="PostName"
-                    placeholder="Enter Your Name Here"
-                    className="w-full md:w-[400px] py-1 border-b-[1px] border-b-slate-300"
-                  />
+                    <input
+                      type="text"
+                      id="PostName"
+                      name="PostName"
+                      placeholder="Enter Your Name Here"
+                      className="w-full md:w-[400px] py-1 border-b-[1px] border-b-slate-300"
+                      onChange={HandlePost}
+                      value={contactInfo.PostName}
+                    />
+                  </div>
+                  <div className="flex flex-col mt-6">
+                    <label
+                      htmlFor="#"
+                      className="font-DM_Sans font-bold text-lg text-Btn_Color"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="PostEmail"
+                      name="PostEmail"
+                      placeholder="Enter Your Email Here"
+                      className="w-full md:w-[400px] py-1 border-b-[1px] border-b-slate-300"
+                      onChange={HandlePost}
+                      value={contactInfo.PostEmail}
+                    />
+                  </div>
+                  <div className="flex flex-col mt-6">
+                    <label
+                      htmlFor="#"
+                      className="font-DM_Sans font-bold text-lg text-Btn_Color pb-1"
+                    >
+                      Message
+                    </label>
+                    <textarea
+                      name="MessageText"
+                      id="MessageText"
+                      className="w-full md:w-[400px] min-h-24 border-[1px] border-slate-300"
+                      onChange={HandlePost}
+                      value={contactInfo.MessageText}
+                    ></textarea>
+                  </div>
+                  <div>
+                    <p className="w-[400px] flex justify-end pr-2 font-DM_Sans font-bold text-base">
+                      0/100
+                    </p>
+                  </div>
+                  <div className="mt-10">
+                    {loading ? (
+                      <button
+                        type="button"
+                        className="bg-indigo-500 px-2 mt-10 py-2 flex items-center justify-center text-Common_Color font-DM_Sans font-bold"
+                      >
+                        <svg
+                          className="animate-spin h-5 w-5 mr-3 border-4 border-gray-50 border-b-4 border-b-green-500  rounded-full"
+                          viewBox="0 0 24 24"
+                        ></svg>
+                        Processing...
+                      </button>
+                    ) : (
+                      <button
+                        className="px-8 py-2 bg-Btn_Color text-Common_Color hover:bg-green-500"
+                        onClick={HandlePostDetails}
+                      >
+                        Post Here
+                      </button>
+                    )}
+                  </div>
                 </div>
-                <div className="flex flex-col mt-6">
-                  <label
-                    htmlFor="#"
-                    className="font-DM_Sans font-bold text-lg text-Btn_Color"
-                  >
-                    Email
-                  </label>
-                  <input
-                    type="email"
-                    id="PostEmail"
-                    name="PostEmail"
-                    placeholder="Enter Your Email Here"
-                    className="w-full md:w-[400px] py-1 border-b-[1px] border-b-slate-300"
-                  />
-                </div>
-                <div className="flex flex-col mt-6">
-                  <label
-                    htmlFor="#"
-                    className="font-DM_Sans font-bold text-lg text-Btn_Color pb-1"
-                  >
-                    Message
-                  </label>
-                  <textarea
-                    name="MessageText"
-                    id="MessageText"
-                    className="w-full md:w-[400px] min-h-24 border-[1px] border-slate-300"
-                  ></textarea>
-                </div>
-                <div className="mt-10">
-                  <button className="px-8 py-2 bg-Btn_Color text-Common_Color hover:bg-green-500">
-                    Post Here
-                  </button>
-                </div>
-              </div>
+              </form>
             </div>
             <div className="py-48">
               <iframe

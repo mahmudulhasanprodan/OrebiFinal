@@ -9,8 +9,8 @@ import Flex from '../../CommonComponent/Flex/Flex';
 import { Link, useNavigate } from 'react-router-dom';
 import { useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { GetTotal } from '../../Redux/CartSlice/CartSlice';
-
+import { GetTotal, removeItem } from '../../Redux/CartSlice/CartSlice';
+import { ImCross } from "react-icons/im";
 
 
 const Menu = () => {
@@ -62,9 +62,14 @@ const HandleView = () => {
 };
 
 useEffect(() => {
-   dispatch(GetTotal())
+  dispatch(GetTotal());
 },[CartItem])
 
+// Handleremove function start here
+const Handleremove = (item) =>{
+  setShowCart(true);
+  dispatch(removeItem(item));
+};
 
 
   return (
@@ -208,7 +213,6 @@ useEffect(() => {
                     {CartItem?.map((item) => (
                       <div
                         className="flex items-center justify-between border-b-[1px] border-gray-300 hover:bg-gray-300"
-                        onClick={() => HandleDetails(item.dispatch)}
                       >
                         <div className="flex items-center gap-x-3 py-2 pl-2">
                           <picture>
@@ -229,7 +233,7 @@ useEffect(() => {
                         </div>
                         <div className="pr-3">
                           <span>
-                            <FaAngleRight />
+                            <ImCross onClick={() => Handleremove(item)} className="active:text-red-400"/>
                           </span>
                         </div>
                       </div>
