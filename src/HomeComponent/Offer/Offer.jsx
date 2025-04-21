@@ -18,8 +18,9 @@ const Offer = () => {
                 Electronics Sale
               </h2>
               <p className="font-DMsans tex-base font-normal w-[511px] pt-4 pb-6">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry orem Ipsum..
+                Electronics refers to the branch of technology that deals with
+                the design and use of circuits, devices, and systems that
+                control the flow of electrons or other charged particles
               </p>
               <button className={"py-2 px-8 bg-black text-white font-DMsans"}>
                 Shop Now

@@ -6,6 +6,7 @@ import RightDetails from '../RightDetails/RightDetails'
 import Flex from '../../CommonComponent/Flex/Flex'
 import { Link } from 'react-router-dom'
 import { FaAngleDoubleLeft, FaAngleDoubleRight } from "react-icons/fa";
+import Loading from "../../CommonComponent/Loading/Loading"
 
 
 const ShopRight = ({className}) => {
@@ -13,7 +14,8 @@ const ShopRight = ({className}) => {
 const dispatch =  useDispatch();
 const[AllData,setAllData] = useState([])
 const[page,setpage]= useState(1);
-const[ShowValue,setShowValue]= useState();
+const[ShowValue,setShowValue]= useState(9);
+
 
 
 useEffect(() => {
@@ -54,22 +56,28 @@ const HandleShow = (e) => {
             <RightTop OnShowItem={HandleShow} />
           </div>
           <div>
-            <Flex className={"items-center flex-wrap gap-y-6 mt-10 mb-10"}>
-              {AllData?.slice(
-                page * ShowValue - ShowValue,
-                page * ShowValue,
-              ).map((item) => (
-                <div key={item.id}>
-                  <Link to={`/product-details/${item.id}`}>
-                    <RightDetails
-                      Title={item.title.slice(0, 20)}
-                      Price={item.price}
-                      ShopImage={item.thumbnail}
-                    />
-                  </Link>
-                </div>
-              ))}
-            </Flex>
+            {Status.payload === "Loading" ? (
+              <Loading className={"h-[100vh] flex items-center justify-center"}/>
+            ) : Status.payload === "Error" ? (
+              <p>This is a Error Page</p>
+            ) : (
+              <Flex className={"items-center flex-wrap gap-y-6 mt-10 mb-10"}>
+                {AllData?.slice(
+                  page * ShowValue - ShowValue,
+                  page * ShowValue,
+                ).map((item) => (
+                  <div key={item.id}>
+                    <Link to={`/product-details/${item.id}`}>
+                      <RightDetails
+                        Title={item.title.slice(0, 20)}
+                        Price={item.price}
+                        ShopImage={item.thumbnail}
+                      />
+                    </Link>
+                  </div>
+                ))}
+              </Flex>
+            )}
           </div>
           <div className="py-6 px-4">
             <div className="flex items-center gap-x-3">
@@ -85,9 +93,10 @@ const HandleShow = (e) => {
                 {[
                   ...new Array(
                     Math.floor(
-                      Math.floor(AllData.length/ShowValue)  <= AllData.length/ShowValue
-                        ? Math.floor(AllData.length/ ShowValue) + 1
-                        : AllData.length / 9,
+                      Math.floor(AllData.length / ShowValue) <=
+                        AllData.length / ShowValue
+                        ? Math.floor(AllData.length / ShowValue) + 1
+                        : AllData.length / ShowValue,
                     ),
                   ),
                 ].map((item, index) => (

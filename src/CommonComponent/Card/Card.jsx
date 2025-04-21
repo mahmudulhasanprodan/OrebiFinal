@@ -1,7 +1,7 @@
 import React from 'react'
 import img from "../../assets/HomeComponentImage/Image.png"
 
-const Card = ({Title,Price,Arrivalpic}) => {
+const Card = ({Title,Price,Arrivalpic,MainPrice,Discount,Rating}) => {
   return (
     <>
       <div className="h-auto md:h-[300px] w-[200px] cursor-pointer rounded-sm bg-Common_Color shadow-sm hover:shadow-md ml-2">
@@ -16,11 +16,11 @@ const Card = ({Title,Price,Arrivalpic}) => {
             <p className="font-DM_Sans font-bold text-xl text-yellow-700">{Price ? `$${Price}` : "$45.00"}</p>
           </div>
           <div>
-            <del className="font-DM_Sans text-base mr-2">$129</del>
+            <del className="font-DM_Sans text-base mr-2">{MainPrice ? MainPrice : "$129"}</del>
             <span className="bg-yellow-700 px-1 py-1 font-Lato text-sm font-bold text-Common_Color rounded-md">
-              85%
+              {Discount ? Discount : "2%"}
             </span>
-            <h3>*****</h3>
+            <h3>{Rating ? Rating : "*****"}</h3>
           </div>
         </div>
       </div>

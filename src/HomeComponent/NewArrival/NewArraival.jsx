@@ -4,12 +4,13 @@ import Flex from '../../CommonComponent/Flex/Flex';
 import { FeatcherProduct } from '../../Redux/ProductSlice/ProductSlice';
 import { useDispatch,useSelector } from 'react-redux';
 import Loading from '../../CommonComponent/Loading/Loading';
+import { Link, useNavigate } from 'react-router-dom';
 
 const NewArraival = () => {
 
 const dispatch = useDispatch();
 const[ArrivalData,setArrivalData] = useState([])
-const[LoadingItem,setLoadingItem]= useState(false);
+const Navigate = useNavigate();
 
 useEffect(() => {
    dispatch(FeatcherProduct("https://dummyjson.com/products"));
@@ -24,7 +25,10 @@ useEffect(() => {
    };
 },[Status.payload,Data.payload])
 
-
+//HandleAllProducts Function Start Here
+const HandleAllProducts = () => {
+  Navigate("/shop");
+};
 
   return (
     <>
@@ -36,7 +40,7 @@ useEffect(() => {
                 <h2 className="p-4 font-Lato text-2xl font-bold tracking-tighter text-Btn_Color">
                   New Arrival
                 </h2>
-                <button className="px-8 py-2 bg-Btn_Color text-Common_Color">
+                <button className="px-8 py-2 bg-Btn_Color text-Common_Color active:bg-green-400" onClick={HandleAllProducts}>
                   Shop All Products
                 </button>
               </div>
@@ -60,14 +64,22 @@ useEffect(() => {
                 </div>
               ) : (
                 <div className="flex items-center flex-wrap xl:justify-between  overflow-hidden bg-slate-100 md:bg-transparent">
-                  {ArrivalData?.slice(0,11).map((item) => (
-                    <div className="py-4" key={item.id}>
-                      <Card
-                        Title={item.title.slice(0, 15)}
-                        Arrivalpic={item.thumbnail}
-                        Price={item.price}
-                      />
-                    </div>
+                  {ArrivalData?.slice(0, 11).map((item) => (
+                    <Link to={`/product-details/${item.id}`}>
+                      <div
+                        className="py-4"
+                        key={item.id}                     
+                      >
+                        <Card
+                          Title={item.title.slice(0, 15)}
+                          Arrivalpic={item.thumbnail}
+                          Price={`${Math.floor(item.price - (item.price * item.discountPercentage) / 100)}`}
+                          MainPrice={`$${item.price}`}
+                          Discount={`${Math.round(item.discountPercentage)}%`}
+                          Rating={""}
+                        />
+                      </div>
+                    </Link>
                   ))}
                 </div>
               )}
