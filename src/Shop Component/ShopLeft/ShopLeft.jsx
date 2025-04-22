@@ -8,7 +8,7 @@ const ShopLeft = ({className}) => {
     <>
       <div className={className}>
         <div className="container">
-          <div className="px-4">
+          <div className="px-4 hidden md:block">
             <CatagoryData
               Title={"Shop by Category"}
               AllData={ProductData ? ProductData : []}

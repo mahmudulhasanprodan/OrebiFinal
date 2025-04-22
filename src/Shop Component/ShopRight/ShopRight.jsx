@@ -15,6 +15,7 @@ const dispatch =  useDispatch();
 const[AllData,setAllData] = useState([])
 const[page,setpage]= useState(1);
 const[ShowValue,setShowValue]= useState(9);
+const[Catagory,setCatagory] = useState();
 
 
 
@@ -44,6 +45,10 @@ const HandleShow = (e) => {
   setShowValue(e.target.value);
 };
 
+// HandleCatagory Function Start Here
+const HandleCatagory = (e) => {
+  setCatagory(e.target.value);     
+};
 
 
 
@@ -53,7 +58,7 @@ const HandleShow = (e) => {
       <div className={className}>
         <div className="container">
           <div>
-            <RightTop OnShowItem={HandleShow} />
+            <RightTop OnShowItem={HandleShow} OnShowCatagory={HandleCatagory}/>
           </div>
           <div>
             {Status.payload === "Loading" ? (
@@ -61,7 +66,7 @@ const HandleShow = (e) => {
             ) : Status.payload === "Error" ? (
               <p>This is a Error Page</p>
             ) : (
-              <Flex className={"items-center flex-wrap gap-y-6 mt-10 mb-10"}>
+              <Flex className={"items-center justify-center md:items-start flex-wrap gap-y-6 mt-10 mb-10"}>
                 {AllData?.slice(
                   page * ShowValue - ShowValue,
                   page * ShowValue,
@@ -79,8 +84,8 @@ const HandleShow = (e) => {
               </Flex>
             )}
           </div>
-          <div className="py-6 px-4">
-            <div className="flex items-center gap-x-3">
+          <div className="py-6 px-4 md:px-0">
+            <div className="flex items-center justify-center xl:items-start gap-x-3">
               <div>
                 <p
                   className="cursor-pointer"
@@ -102,7 +107,7 @@ const HandleShow = (e) => {
                 ].map((item, index) => (
                   <div key={index}>
                     <p
-                      className={`w-10 h-10 bg-black flex items-center justify-center font-bold text-Common_Color cursor-pointer rounded-sm ${page === index + 1 && "bg-blue-500"}`}
+                      className={`w-8 h-8 sm:w-10 sm:h-10 bg-black flex items-center justify-center font-bold text-Common_Color cursor-pointer rounded-sm ${page === index + 1 && "bg-blue-500"}`}
                       onClick={() => HandlePage(index + 1)}
                     >
                       {index + 1}

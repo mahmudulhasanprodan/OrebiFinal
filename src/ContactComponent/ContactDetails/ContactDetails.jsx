@@ -119,7 +119,7 @@ const HandlePostDetails = () => {
                     <textarea
                       name="MessageText"
                       id="MessageText"
-                      className="w-full md:w-[400px] min-h-24 border-[1px] border-slate-300"
+                      className="w-full md:w-[400px] min-h-24 border-[1px] border-slate-300 pl-1"
                       onChange={HandlePost}
                       value={contactInfo.MessageText}
                     ></textarea>

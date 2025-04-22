@@ -11,8 +11,6 @@ const CatagoryData = ({Title,AllData=["One","Two","Three"]}) => {
   );
 
 
-console.log(showCategories);
-
   // HandleShow function start here
 
   const HandleShow = (id) => {
@@ -28,7 +26,7 @@ console.log(showCategories);
     <>
       <div>
         <div>
-          <h2 className="font-DM_Sans font-bold text-xl text-black bg-yellow-500 pl-1">
+          <h2 className="font-DM_Sans font-bold xl:text-xl text-black bg-yellow-500 pl-1">
             {Title ? Title : "Title Missing"}
           </h2>
         </div>
@@ -38,7 +36,7 @@ console.log(showCategories);
               <div onClick={() => HandleShow(index)}>
                 <div className="flex items-center justify-between pr-3 cursor-pointer">
                   <div key={item.id} className="cursor-pointer py-1">
-                    <p className="font-DM_Sans text-base font-bold text-Btn_Color">
+                    <p className="font-DM_Sans md:text-sm xl:text-base font-bold text-Btn_Color">
                       {item.Category}
                     </p>
                   </div>

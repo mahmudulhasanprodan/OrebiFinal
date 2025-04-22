@@ -57,11 +57,11 @@ export const BrandData = [
   ];
 
   export const DropdownData = [
-    { id: 1, product: "Feature" },
-    { id: 2, product: "Cloths" },
-    { id: 3, product: "Sunglass" },
-    { id: 4, product: "Fasion" },
-    { id: 5, product: "Men Fasion" },
+    { id: 1, product: "Beauty" },
+    { id: 2, product: "Fragrances" },
+    { id: 3, product: "Groceries" },
+    { id: 4, product: "Furniture" },
+    { id: 5, product: "Electronics Device" },
   
   ];
   

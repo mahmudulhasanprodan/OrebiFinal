@@ -3,15 +3,18 @@ import BreadCrumb from '../../CommonComponent/BreadCrumb/BreadCrumb';
 import fireapp from '../../../Firebase/FirebaseSDK';
 import SignForm from './SignForm';
 import Flex from '../../CommonComponent/Flex/Flex';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword,sendEmailVerification  } from "firebase/auth";
 import {toast,Bounce} from 'react-toastify';
 import { db } from '../../../Firebase/FirebaseSDK';
 import { collection, addDoc } from "firebase/firestore"; 
+import { SuccessMessage } from '../../../Utils/utils';
+import { useNavigate } from 'react-router-dom';
 
 
 const SignUpDetails = ({Title}) => {
   const auth = getAuth(fireapp);
   const[loading,setloading] = useState(false);
+  const Navigate = useNavigate();
   const[ShowInput,setShowInput]=useState({
     FistName: "",
     LastName: "",
@@ -178,21 +181,14 @@ const HandleSignUp = () => {
     setloading(true);
    /// create user with firebase createUserWithEmailAndPassword
    createUserWithEmailAndPassword(auth,ShowInput.EmailId,ShowInput.Password).then((usedetails) => {
-    toast.success(`${ShowInput.FistName} Successfully Done`, {
-      position: "top-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      transition: Bounce,
-      });
-    
+      SuccessMessage(`${ShowInput.FistName,"top-center"} Successfully Done`)
    }).then(() => {
       addDoc(collection(db,"signUp/"),ShowInput).then((UserInfo) => {
-        console.log(UserInfo);
+        sendEmailVerification(auth.currentUser).then(() => {
+          SuccessMessage(`${ShowInput.FistName} Check Your Email Address`)
+        });
+      }).then(() => {
+        Navigate("/login")
       }).catch((error) => {
         console.log(error);
       })
@@ -343,7 +339,7 @@ const HandleSignUp = () => {
               <div className="basis-1/3">
                 <SignForm
                   LabelTitle={"AddressTwo"}
-                  InputType={"password"}
+                  InputType={"text"}
                   InputId={"AddressTwo"}
                   InputName={"AddressTwo"}
                   InputPlaceHolder={"Enter Your Address Two Here"}

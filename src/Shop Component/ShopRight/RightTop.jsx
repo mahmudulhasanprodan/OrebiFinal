@@ -8,7 +8,7 @@ import { DropdownData,DropdownShowData } from '../../../JsonData/JsonData';
 
 
 
-const RightTop = ({OnShowItem}) => {
+const RightTop = ({OnShowItem,OnShowCatagory}) => {
 
 const[DataOne,setDataOne] = useState(DropdownData);
 const[DataTwo,setDataTwo] = useState(DropdownShowData);
@@ -19,24 +19,25 @@ const[DataTwo,setDataTwo] = useState(DropdownShowData);
   return (
     <>
       <div className="py-2 bg-slate-100 shadow-md">
-        <Flex className={"items-center justify-between cursor-pointer px-2"}>
-          <div>
+        <Flex className={"items-center justify-center md:justify-between cursor-pointer px-2"}>
+          <div className="hidden md:block">
             <div className="flex items-center gap-x-3">
               <div className="bg-slate-400 p-2">
                 <FaBars className="font-bold text-2xl text-Common_Color" />
               </div>
               <div>
-                <FaBarsStaggered className="font-bold text-2xl" />
+                <FaBarsStaggered className="font-bold text-2xl hidden xl:block" />
               </div>
             </div>
           </div>
 
           <div className="flex items-center gap-x-14">
-            <div>
+            <div className="hidden md:block">
               <select
                 name="Short"
                 id="Short"
                 className="w-52 border-2 border-slate-200 py-1 px-1 cursor-pointer"
+                onChange={OnShowCatagory}
               >
                 <option value="feature">Select Item</option>
                 {DataOne?.map((item) => (
@@ -53,7 +54,7 @@ const[DataTwo,setDataTwo] = useState(DropdownShowData);
               <select
                 name="ItemList"
                 id="ItemList"
-                className="w-32 border-2 border-slate-200 py-1 px-1 cursor-pointer"
+                className="w-52 md:w-32 border-2 border-slate-200 py-1 px-1 cursor-pointer"
                 onChange={OnShowItem}
               >
                 <option value="Select Item">Select Item</option>

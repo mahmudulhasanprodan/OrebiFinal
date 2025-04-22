@@ -17,7 +17,7 @@ const HandleShowBrand = () => {
       <div>
         <div className="flex items-center justify-between pr-3 cursor-pointer mt-4 bg-yellow-500">
           <div>
-            <h2 className="font-DM_Sans font-bold text-xl text-black pl-1">
+            <h2 className="font-DM_Sans font-bold xl:text-xl text-black pl-1">
               {Title ? Title : "Title Missing"}
             </h2>
           </div>
@@ -37,7 +37,7 @@ const HandleShowBrand = () => {
           <div className="mt-2 divide-y divide-slate-200">
             {AllData?.map((item) => (
               <div key={item.id}>
-                <p className="font-DM_Sans text-base font-bold pl-2 py-1 text-Btn_Color hover:bg-yellow-700 cursor-pointer hover:text-Common_Color">
+                <p className="font-DM_Sans md:text-sm xl:text-base font-bold pl-2 py-1 text-Btn_Color hover:bg-yellow-700 cursor-pointer hover:text-Common_Color">
                   {item.Brand ? item.Brand : item.Price}
                 </p>
               </div>

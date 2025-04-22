@@ -201,7 +201,7 @@ const Handleremove = (item) =>{
 
               <span onClick={HandleCart}>
                 <FaShoppingCart />
-                <div className="w-8 h-8 bg-gray-300 rounded-full absolute -top-6 -right-6">
+                <div className="w-8 h-8 bg-gray-300 rounded-full absolute -top-6 -right-4 sm:-right-6">
                   <p className="flex items-center justify-center h-full font-bold">
                     {TotalItem}
                   </p>
